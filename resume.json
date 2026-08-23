@@ -1,338 +1,34 @@
 {
     "education": [
         {
-            "details": "UniversityofCalifornia,Irvine:DonaldBrenSchoolofInformationandComputerScience Irvine,CA"
+            "details": "University of California, Irvine: Donald Bren School of Information and Computer Science Irvine, CA"
         },
         {
-            "details": "BachelorofScience(B.S.)inComputerScience Aug2024-ExpectedMar2027"
+            "details": "Bachelor of Science (B.S.) in Computer Science Aug 2024 - Expected Mar 2027"
         },
         {
-            "details": "\u2219 GPA:3.873/4.0"
+            "details": "\u2219 GPA: 3.873/4.0"
         },
         {
-            "details": "\u2219 Achievements:Dean\u2019sHonorsList(6/6consecutiveacademicquarters)"
+            "details": "\u2219 Achievements: Dean\u2019s Honors List (6/6 consecutive academic quarters)"
         },
         {
-            "details": "\u2219 RelevantCoursework:DataStructures,Algorithms,AdvancedPython,C++,ComputerOrganization,MachineLearning,IntrotoArtificial"
+            "details": "\u2219 Relevant Coursework: Data Structures, Algorithms, Advanced Python, C++, Computer Organization, Machine Learning, Intro to Artificial"
         },
         {
-            "details": "Intelligence,InformationRetrieval,DatabaseManagement"
+            "details": "Intelligence, Information Retrieval, Database Management"
         }
     ],
     "experience": [
         {
-            "title": "SoftwareEngineering/MachineLearningIntern Fremont,CA",
-            "bullets": []
-        },
-        {
-            "title": "StealthAI Jun2026-Present",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 DesignedandshippedanOpenAPI-basedAPIdocumentationsystemthatauto-generatesendpointdocumentationfromJSDoccomments,integrated",
-            "bullets": []
-        },
-        {
-            "title": "intoCI/CDandadoptedcompany-wideacross12+endpointsbytheentiredevelopmentteam,includingtheCTOandseniorengineers.",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 TrainedanditerativelytunedaMultilayerPerceptron(MLP)modelpipelineoutputting13bodymeasurements,preprocessingtrainingdatasets",
-            "bullets": []
-        },
-        {
-            "title": "rangingfrom20to6,200rowsandreducingMeanAbsoluteError(MAE)acrossmostmeasurementtargetsthroughhyperparametertuning.",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 Evaluatedper-measurementMAEtrade-offsafterretraining,identifyingwhichmeasurementsmettheaccuracybarforproductiondeploymentand",
-            "bullets": []
-        },
-        {
-            "title": "flaggingotherswithregressedaccuracyforfurtheriteration.",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 Extendedthemeasurementpipelinewith8additionalgeometrically-calculatedlengthmeasurementsand4additionalcircumferencemeasurementsvia",
-            "bullets": []
-        },
-        {
-            "title": "ananthropometricpriorfusingsystem.",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 SeededNeonDBandGCPCloudSQLdatabasesacross10+backendendpointsandshippedanoptionalbrand-filteringfeatureenabling",
-            "bullets": []
-        },
-        {
-            "title": "brand-specificqueriesplatform-widewithzeroaddedlatency.",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 Builtatrain\u2013inferencefeaturepipelineextractinganatomical-levelimagefeaturesfromtwo-viewinputs,withsharedimputationandscalingsotraining",
-            "bullets": []
-        },
-        {
-            "title": "andservingusedanidenticalfeaturespace.",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 AutomatedboilerplategenerationandunittestwritingusingCursorAIIDEandLLMpromptingworkflows,acceleratingfeaturedeliverytimelines.",
-            "bullets": []
-        },
-        {
-            "title": "SoftwareDevelopementResearchAssistant Irvine,CA",
-            "bullets": []
-        },
-        {
-            "title": "UCIrvineCharlieDunlopSchoolofBiologicalSciences Mar2026-Present",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 ScaledtheMedTech@UCIcognitiveprojectintoaformallabpartnership,integratingourcognitivegameintotheMindCycleapp,nowusedin",
-            "bullets": []
-        },
-        {
-            "title": "30+activeclinicaltrials.",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 CollaboratedwiththeUCISLEEPLabunderDr.KatherineSimon,buildingbackendloggingsystemstotrack4+corebehavioralmetricsacross10+",
-            "bullets": []
-        },
-        {
-            "title": "studysessions,improvingdata-capturereliability.",
-            "bullets": []
-        },
-        {
-            "title": "SoftwareEngineer\u2192SoftwareDevelopmentCo-Lead(PromotedSep2025) Irvine,CA",
-            "bullets": []
-        },
-        {
-            "title": "MedTech@UCI Sep2024-Present",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 Ledateamof 5engineersusingUnityandC#todevelopapediatriccognitiveanalysisappwithimage-recognitionandmemorytools,usedby20+",
-            "bullets": []
-        },
-        {
-            "title": "patients/testers,enablingearlierdetectionofcognitivedelays.",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 DesignedinteractivecognitivegamesusingReactandJavaScript,deliveringtherapeuticinterfacesfordementiaandAlzheimer\u2019spatients.",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 EngineeredaReactmetrics-trackingenginetocapture15+corecognitivemetrics,providingclinicianswithactionableanalyticalinsights.",
-            "bullets": []
-        },
-        {
-            "title": "SoftwareDevelopmentIntern&Instructor Seattle,WA",
-            "bullets": []
-        },
-        {
-            "title": "TechAcademyofMinnesota Jun2025-Aug2025",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 Deliveredfull-stackcurriculumto18students,guidingwebdevelopmentusingPython,HTML,CSS,andJavaScript.",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 Formulatedstructureddebuggingframeworksand12labexercises,drivingstudentprojectcompletionratesto100%forstudentsstartingwithnoprior",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 Translatedcomplexsoftwareengineeringparadigmsintodigestibleconcepts,providingstudentswithastrongfoundationofprogramming",
-            "bullets": []
-        },
-        {
-            "title": "fundamentals.",
-            "bullets": []
-        },
-        {
-            "title": "LeadAI/MLResearcher&Developer Remote",
-            "bullets": []
-        },
-        {
-            "title": "CollaborationwithStanfordUniversityGraduateResearchers May2023-Nov2023",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 Preprocessedandengineeredfeaturesfromahigh-dimensional,multi-modalNFLinjurydataset(270,000rows)usingPandasandNumPy,isolating",
-            "bullets": []
-        },
-        {
-            "title": "criticalriskfactorsthatinformedsubsequentmodeling.",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 Developed,trained,andtunedSoftmaxRegressionandDeepNeuralNetworkmodelsinPyTorchandScikit-Learn,improvingpredictive",
-            "bullets": []
-        },
-        {
-            "title": "accuracyfroma55%baselineto69%(+14%).",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 Authoredtechnicaldocumentationdetailingmodellimitationsandarchitecturalbottlenecks,enablingtheteamtostreamlinethenextdatapipelineand",
-            "bullets": []
-        },
-        {
-            "title": "reducedevelopmenttime.",
-            "bullets": []
-        },
-        {
-            "title": "LeadAI/MLResearcher&Developer Remote",
-            "bullets": []
-        },
-        {
-            "title": "CollaborationwithGeorgiaInstituteofTechnology&CornellUniversityGraduateResearchers Jun2023-Aug2023",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 ResearchedNLPandcomputervisionsubfieldsusingPython,Scikit-Learn,andTensorFlow,identifyingtechniquesthatreducedprocessing",
-            "bullets": []
-        },
-        {
-            "title": "latencyforvisiontasks.",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 Implementedandbenchmarked4computervisionmodelsinPyTorch/TensorFlowtoclassifydriverdistractionfromimageandvideodata,achieving",
-            "bullets": []
-        },
-        {
-            "title": "80-85%validationaccuracy.",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 Defendedtechnicalfindingsandarchitecturalchoicestouniversityfaculty,incorporatingfeedbacktorefinemodelaccuracy.",
-            "bullets": []
-        },
-        {
-            "title": "Projects",
-            "bullets": []
-        },
-        {
-            "title": "ZOTNest|LiveDemo-UCIrvine\u2019s2026IrvineHacksHackathon Feb2026",
-            "bullets": []
-        },
-        {
-            "title": "React,Python,FastAPI,Supabase,GeminiEmbeddings,RAG,Leaflet",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 Builtafull-stackpropertysearchwebappforoff-campushousingdiscovery,targeting30,000+UCIstudents,combiningmulti-criteriafilteringwith",
-            "bullets": []
-        },
-        {
-            "title": "aRetrieval-AugmentedGeneration(RAG)pipelineforsemanticsearch.",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 Embeddedstructuredlistingdataandscraped100+GooglereviewsperpropertyviaGeminiembeddings(1536-dim),storingvectorsinaSupabase",
-            "bullets": []
-        },
-        {
-            "title": "pgvectorstoreforsimilaritysearch.",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 Designedatwo-stagequerypipelinecombiningLLM-basedstructuredpreferenceextraction(budget,bedrooms,distance,shuttleaccess)withvector",
-            "bullets": []
-        },
-        {
-            "title": "similaritysearch,mergingbothsignalsintoanormalizedhybridrelevancescore,achieving90%queryaccuracy.",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 IntegratedLeafletforreal-timepropertymapping,andprocessedscrapedreviewsintoacombinedper-propertydocumentrepresentationtopower",
-            "bullets": []
-        },
-        {
-            "title": "qualitative\"vibe\"search.",
-            "bullets": []
-        },
-        {
-            "title": "UCIThemedGeoguessr|LiveDemo Dec2024",
-            "bullets": []
-        },
-        {
-            "title": "React,Node.js,TypeScript,C++,CrowAPI,GoogleCloudPlatform,Vercel",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 Leda4-5-personengineeringteamfromsystemarchitectureideationthroughimplementationanddeployment,managingstructuredGitworkflows.",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 ArchitectedanasynchronousC++backendusingCrowAPI,hostedonGoogleCloudPlatform,reducinggameplaylatencytosub-600msand",
-            "bullets": []
-        },
-        {
-            "title": "supporting109real-timeconcurrentassetupdates.",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 Constructedacustommathematicalmap-scoringalgorithmandintegratedLeaflet,achievingsub-secondassetrenderingforallusers.",
-            "bullets": []
-        },
-        {
-            "title": "DriverDelineation-UCIrvine\u2019s2025Datathon Apr2025",
-            "bullets": []
-        },
-        {
-            "title": "Python,PyTorch,TensorFlow,Scikit-Learn,NumPy",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 TrainedsupervisedMLmodelsusingPyTorchandScikit-Learntopredictdriverrisklikelihoodfromhigh-dimensionaltelemetrydatasets.",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 Executedrigorousfeatureengineeringacross40+impactvariablestominimizemodeloverfittingandmaximizegeneralizability.",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 Designedamulti-layerDeepNeuralNetwork(DNN)inTensorFlow,tuninghyper-parameterstoachieve90%validationaccuracy.",
-            "bullets": []
-        },
-        {
-            "title": "Wordle|LiveDemo Jun2026",
-            "bullets": []
-        },
-        {
-            "title": "JavaScript,Python(FastAPI),CSS,React,Next.js",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 DeployedaWordleclonewithaFastAPIbackendhandlingwordvalidation,answerselection,andgame-statelogicviaaRESTAPI.",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 BuiltaresponsiveReactfrontendwithmodularJavaScriptanddynamicDOMmanipulation,includingreal-timekeyboard-statetrackingand",
-            "bullets": []
-        },
-        {
-            "title": "color-codedguessfeedback.",
-            "bullets": []
-        },
-        {
-            "title": "\u2219 Addedword-definitionlookupsviaaPythonbackendscrapingnltk.corpus(WordNet),plusacustomizableword-lengthfeaturewithadynamicgrid",
-            "bullets": []
-        },
-        {
-            "title": "UIinReact.",
+            "title": "Software Engineering / Machine Learning Intern Fremont, CA | Stealth AI Jun 2026 - Present | \u2219 Designed and shipped an OpenAPI-based API documentation system that auto-generates endpoint documentation from JSDoc comments, integrated | into CI/CD and adopted company-wide across 12+ endpoints by the entire development team, including the CTO and senior engineers. | \u2219 Trained and iteratively tuned a Multilayer Perceptron (MLP) model pipeline outputting 13 body measurements, preprocessing training datasets | ranging from 20 to 6,200 rows and reducing Mean Absolute Error (MAE) across most measurement targets through hyperparameter tuning. | \u2219 Evaluated per-measurement MAE trade-offs after retraining, identifying which measurements met the accuracy bar for production deployment and | flagging others with regressed accuracy for further iteration. | \u2219 Extended the measurement pipeline with 8 additional geometrically-calculated length measurements and 4 additional circumference measurements via | an anthropometric prior fusing system. | \u2219 Seeded NeonDB and GCP Cloud SQL databases across 10+ backend endpoints and shipped an optional brand-filtering feature enabling | brand-specific queries platform-wide with zero added latency. | \u2219 Built a train\u2013inference feature pipeline extracting anatomical-level image features from two-view inputs, with shared imputation and scaling so training | and serving used an identical feature space. | \u2219 Automated boilerplate generation and unit test writing using Cursor AI IDE and LLM prompting workflows, accelerating feature delivery timelines. | Software Developement Research Assistant Irvine, CA | UC Irvine Charlie Dunlop School of Biological Sciences Mar 2026 - Present | \u2219 Scaled the MedTech@UCI cognitive project into a formal lab partnership, integrating our cognitive game into the MindCycle app, now used in | 30+ active clinical trials. | \u2219 Collaborated with the UCI SLEEP Lab under Dr. Katherine Simon, building backend logging systems to track 4+ core behavioral metrics across 10+ | study sessions, improving data-capture reliability. | Software Engineer \u2192 Software Development Co-Lead (Promoted Sep 2025) Irvine, CA | MedTech@UCI Sep 2024 - Present | \u2219 Led a team of 5 engineers using Unity and C# to develop a pediatric cognitive analysis app with image-recognition and memory tools, used by 20+ | patients/testers, enabling earlier detection of cognitive delays. | \u2219 Designed interactive cognitive games using React and JavaScript, delivering therapeutic interfaces for dementia and Alzheimer\u2019s patients. | \u2219 Engineered a React metrics-tracking engine to capture 15+ core cognitive metrics, providing clinicians with actionable analytical insights. | Software Development Intern & Instructor Seattle, WA | Tech Academy of Minnesota Jun 2025 - Aug 2025 | \u2219 Delivered full-stack curriculum to 18 students, guiding web development using Python, HTML, CSS, and JavaScript. | \u2219 Formulated structured debugging frameworks and 12 lab exercises, driving student project completion rates to 100% for students starting with no prior | \u2219 Translated complex software engineering paradigms into digestible concepts, providing students with a strong foundation of programming | fundamentals. | Lead AI/ML Researcher & Developer Remote | Collaboration with Stanford University Graduate Researchers May 2023 - Nov 2023 | \u2219 Preprocessed and engineered features from a high-dimensional, multi-modal NFL injury dataset (270,000 rows) using Pandas and NumPy, isolating | critical risk factors that informed subsequent modeling. | \u2219 Developed, trained, and tuned Softmax Regression and Deep Neural Network models in PyTorch and Scikit-Learn, improving predictive | accuracy from a 55% baseline to 69% (+14%). | \u2219 Authored technical documentation detailing model limitations and architectural bottlenecks, enabling the team to streamline the next data pipeline and | reduce development time. | Lead AI/ML Researcher & Developer Remote | Collaboration with Georgia Institute of Technology & Cornell University Graduate Researchers Jun 2023 - Aug 2023 | \u2219 Researched NLP and computer vision subfields using Python, Scikit-Learn, and TensorFlow, identifying techniques that reduced processing | latency for vision tasks. | \u2219 Implemented and benchmarked 4 computer vision models in PyTorch/TensorFlow to classify driver distraction from image and video data, achieving | 80-85% validation accuracy. | \u2219 Defended technical findings and architectural choices to university faculty, incorporating feedback to refine model accuracy. | Projects | ZOTNest | Live Demo - UC Irvine\u2019s 2026 IrvineHacks Hackathon Feb 2026 | React, Python, FastAPI, Supabase, Gemini Embeddings, RAG, Leaflet | \u2219 Built a full-stack property search web app for off-campus housing discovery, targeting 30,000+ UCI students, combining multi-criteria filtering with | a Retrieval-Augmented Generation (RAG) pipeline for semantic search. | \u2219 Embedded structured listing data and scraped 100+ Google reviews per property via Gemini embeddings (1536-dim), storing vectors in a Supabase | pgvector store for similarity search. | \u2219 Designed a two-stage query pipeline combining LLM-based structured preference extraction (budget, bedrooms, distance, shuttle access) with vector | similarity search, merging both signals into a normalized hybrid relevance score, achieving 90% query accuracy. | \u2219 Integrated Leaflet for real-time property mapping, and processed scraped reviews into a combined per-property document representation to power | qualitative \"vibe\" search. | UCI Themed Geoguessr | Live Demo Dec 2024 | React, Node.js, TypeScript, C++, Crow API, Google Cloud Platform, Vercel | \u2219 Led a 4-5-person engineering team from system architecture ideation through implementation and deployment, managing structured Git workflows. | \u2219 Architected an asynchronous C++ backend using Crow API, hosted on Google Cloud Platform, reducing gameplay latency to sub-600ms and | supporting 109 real-time concurrent asset updates. | \u2219 Constructed a custom mathematical map-scoring algorithm and integrated Leaflet, achieving sub-second asset rendering for all users. | Driver Delineation - UC Irvine\u2019s 2025 Datathon Apr 2025 | Python, PyTorch, TensorFlow, Scikit-Learn, NumPy | \u2219 Trained supervised ML models using PyTorch and Scikit-Learn to predict driver risk likelihood from high-dimensional telemetry datasets. | \u2219 Executed rigorous feature engineering across 40+ impact variables to minimize model overfitting and maximize generalizability. | \u2219 Designed a multi-layer Deep Neural Network (DNN) in TensorFlow, tuning hyper-parameters to achieve 90% validation accuracy. | Wordle | Live Demo Jun 2026 | JavaScript, Python (FastAPI), CSS, React, Next.js | \u2219 Deployed a Wordle clone with a FastAPI backend handling word validation, answer selection, and game-state logic via a REST API. | \u2219 Built a responsive React frontend with modular JavaScript and dynamic DOM manipulation, including real-time keyboard-state tracking and | color-coded guess feedback. | \u2219 Added word-definition lookups via a Python backend scraping nltk.corpus (WordNet), plus a customizable word-length feature with a dynamic grid | UI in React.",
             "bullets": []
         }
     ],
     "skills": {
-        "Languages/Frameworks": "Java,Python,C++,SQL,TypeScript,JavaScript,React,Node.js,Next.js,FastAPI,RESTAPIs,OpenAPI,C#",
-        "AI/ML": "MachineLearning,Supervised/UnsupervisedLearning,NLP,ComputerVision,PyTorch,TensorFlow,Scikit-Learn,Pandas,NumPy,",
-        "Databases/CloudInfrastructure": "MySQL,PostgreSQL,Supabase,GoogleCloudPlatform,Vercel",
-        "Other": "HTML,CSS,Docker,Git,Unity,Agile,CI/CD,SoftwareEngineeringParadigms"
+        "Languages/Frameworks": "Java, Python, C++, SQL, TypeScript, JavaScript, React, Node.js, Next.js, FastAPI, REST APIs, OpenAPI, C#",
+        "AI/ML": "Machine Learning, Supervised/Unsupervised Learning, NLP, Computer Vision, PyTorch, TensorFlow, Scikit-Learn, Pandas, NumPy,",
+        "Databases/Cloud Infrastructure": "MySQL, PostgreSQL, Supabase, Google Cloud Platform, Vercel",
+        "Other": "HTML, CSS, Docker, Git, Unity, Agile, CI/CD, Software Engineering Paradigms"
     }
 }
