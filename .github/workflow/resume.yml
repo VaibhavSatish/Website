@@ -1,0 +1,36 @@
+name: Auto-Update Resume Website
+
+on:
+  push:
+    paths:
+      - 'vaibhav_satish.pdf'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pdfplumber
+
+      - name: Run resume parser script
+        run: python update_resume.py
+
+      - name: Commit and push changes if HTML updated
+        run: |
+          git config --global user.name "GitHub Action Bot"
+          git config --global user.email "action@github.com"
+          git add Resume.html
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update resume HTML from new PDF [skip ci]" && git push)
