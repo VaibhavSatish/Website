@@ -1,4 +1,4 @@
-name: Auto-Update Resume Website
+name: Auto-Update Resume Pipeline
 
 on:
   push:
@@ -25,12 +25,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install pdfplumber
 
-      - name: Run resume parser script
+      - name: Run automated resume pipeline script
         run: python update_resume.py
 
-      - name: Commit and push changes if HTML updated
+      - name: Commit and push changes if updated
         run: |
           git config --global user.name "GitHub Action Bot"
           git config --global user.email "action@github.com"
-          git add Resume.html
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update resume HTML from new PDF [skip ci]" && git push)
+          git add Resume.html resume.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update resume website from PDF [skip ci]" && git push)
