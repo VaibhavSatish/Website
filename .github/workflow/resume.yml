@@ -2,8 +2,8 @@ name: Auto-Update Resume Website
 
 on:
   push:
-    paths:
-      - 'vaibhav_satish.pdf'
+    branches:
+      - main
 
 jobs:
   build-and-deploy:
