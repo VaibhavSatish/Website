@@ -42,23 +42,25 @@ def update_resume_from_json():
         html_builder.append('    </div>')
     html_builder.append('</section>')
 
-    # 3. Technical Skills Section
+   # 3. Technical Skills Section
     html_builder.append('<section>')
     html_builder.append('    <h2>Technical Skills</h2>')
     html_builder.append('    <div class="skills-grid">')
     skills = data.get("skills", {})
     category_labels = {
-        "languagesAndFrameworks": "Languages/Frameworks",
-        "aiMl": "AI/ML Skills",
-        "databasesAndCloudInfrastructure": "Databases/Cloud Infrastructure",
-        "other": "Other Skills"
+        "languagesAndFrameworks": "Languages / Frameworks",
+        "aiMl": "AI / ML",
+        "databasesAndCloudInfrastructure": "Databases / Cloud",
+        "other": "Other"
     }
     for key, val_list in skills.items():
         cat_name = category_labels.get(key, key.title())
-        val_str = ", ".join(val_list)
         html_builder.append('        <div class="skill-category">')
         html_builder.append(f'            <h3>{cat_name}</h3>')
-        html_builder.append(f'            <p>{val_str}</p>')
+        html_builder.append('            <div class="badge-row">')
+        for skill in val_list:
+            html_builder.append(f'                <span class="badge">{skill}</span>')
+        html_builder.append('            </div>')
         html_builder.append('        </div>')
     html_builder.append('    </div>')
     html_builder.append('</section>')
