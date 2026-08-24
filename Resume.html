@@ -1,376 +1,455 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vaibhav Satish - Resume</title>
-    <style>
-        :root {
-            --bg-color: #090a0f;
-            --header-bg: #0d0e15;
-            --card-bg: rgba(20, 21, 33, 0.65);
-            --accent-primary: #00ff88;
-            --accent-glow: rgba(0, 255, 136, 0.2);
-            --text-main: #ededf4;
-            --text-muted: #8c8fa3;
-            --border-color: rgba(255, 255, 255, 0.08);
-            --border-glow: rgba(0, 255, 136, 0.3);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vaibhav Satish - Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg-color: #090a0f;
+        --header-bg: #0d0e15;
+        --card-bg: rgba(20, 21, 33, 0.65);
+        --accent-code: #00ff88;
+        --accent-code-glow: rgba(0, 255, 136, 0.22);
+        --accent-human: #ffb454;
+        --accent-human-glow: rgba(255, 180, 84, 0.22);
+        --text-main: #ededf4;
+        --text-muted: #8c8fa3;
+        --border-color: rgba(255, 255, 255, 0.08);
+        --font-display: 'Space Grotesk', system-ui, sans-serif;
+        --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+        --font-body: 'Inter', system-ui, sans-serif;
+    }
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-        }
+    * { box-sizing: border-box; }
 
-        /* Particle Canvas Background */
-        #particle-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
+    html, body {
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+    }
 
-        header, main, footer {
-            position: relative;
-            z-index: 2;
-        }
+    body {
+        font-family: var(--font-body);
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+    }
 
-        header {
-            background: var(--header-bg);
-            padding: 1.5rem 0;
-            text-align: center;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            border-bottom: 2px solid var(--border-color);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-        }
+    #particle-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+    }
 
-        header h1 {
-            margin: 0;
-            color: var(--text-main);
-            font-size: 2rem;
-            font-weight: 700;
-        }
+    main, footer { position: relative; z-index: 2; }
 
-        nav {
-            margin-top: 0.8rem;
-        }
+    /* ---------- Nav (sticky, matches site) ---------- */
+    header.site-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem 2.5rem;
+        background: var(--header-bg);
+        border-bottom: 1px solid var(--border-color);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
 
-        nav a {
-            margin: 0 1.2rem;
-            text-decoration: none;
-            color: var(--text-muted);
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
+    .logo {
+        font-family: var(--font-mono);
+        font-size: 1.05rem;
+        color: var(--accent-code);
+        letter-spacing: 0.5px;
+        text-decoration: none;
+    }
 
-        nav a:hover {
-            color: var(--accent-primary);
-        }
+    nav.links { display: flex; gap: 2rem; }
 
-        main {
-            max-width: 850px;
-            margin: 140px auto 40px auto;
-            padding: 0 2rem;
-            flex: 1;
-            width: 100%;
-            box-sizing: border-box;
-        }
+    nav.links a {
+        position: relative;
+        text-decoration: none;
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        letter-spacing: 0.3px;
+        padding-bottom: 4px;
+        transition: color 0.2s ease;
+    }
 
-        .resume-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            padding: 1.2rem 1.5rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-        }
+    nav.links a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0%;
+        height: 1.5px;
+        background: var(--accent-code);
+        transition: width 0.25s ease;
+    }
 
-        .resume-actions span {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
+    nav.links a:hover { color: var(--text-main); }
+    nav.links a:hover::after { width: 100%; }
+    nav.links a.active { color: var(--accent-code); }
+    nav.links a.active::after { width: 100%; }
 
-        .btn {
-            background-color: transparent;
-            color: var(--accent-primary);
-            border: 1px solid var(--accent-primary);
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-        }
+    /* ---------- Page header ---------- */
+    .page-header {
+        max-width: 850px;
+        margin: 3rem auto 0 auto;
+        padding: 0 2rem;
+    }
 
-        .btn:hover {
-            background-color: var(--accent-glow);
-            box-shadow: 0 0 12px var(--accent-glow);
-        }
+    .eyebrow {
+        font-family: var(--font-mono);
+        color: var(--accent-code);
+        font-size: 0.9rem;
+        margin: 0 0 0.7rem 0;
+    }
 
-        section {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-        }
+    h1.page-title {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 2.6rem;
+        letter-spacing: -0.5px;
+        margin: 0 0 1.5rem 0;
+    }
 
-        section h2 {
-            margin-top: 0;
-            color: var(--accent-primary);
-            font-size: 1.2rem;
-            letter-spacing: 0.5px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.6rem;
-            text-transform: uppercase;
-        }
+    main {
+        max-width: 850px;
+        margin: 0 auto 40px auto;
+        padding: 0 2rem;
+        flex: 1;
+        width: 100%;
+        box-sizing: border-box;
+    }
 
-        .item {
-            margin-bottom: 1.5rem;
-        }
+    .resume-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2.5rem;
+        background: var(--card-bg);
+        backdrop-filter: blur(10px);
+        padding: 1.1rem 1.5rem;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
 
-        .item:last-child {
-            margin-bottom: 0;
-        }
+    .resume-actions span {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        font-family: var(--font-mono);
+    }
 
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
-        }
+    .btn-primary {
+        background-color: var(--accent-code);
+        color: #05130c;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
 
-        .item-title {
-            font-weight: 600;
-            font-size: 1.05rem;
-            color: var(--text-main);
-        }
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px var(--accent-code-glow);
+    }
 
-        .item-subtitle {
-            color: var(--accent-primary);
-            font-size: 0.95rem;
-        }
+    section {
+        background: var(--card-bg);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+    }
 
-        .item-meta {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
+    section h2 {
+        margin-top: 0;
+        font-family: var(--font-mono);
+        color: var(--accent-code);
+        font-size: 1rem;
+        letter-spacing: 1px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 0.8rem;
+        text-transform: uppercase;
+    }
 
-        ul {
-            margin: 0.6rem 0 0 1.2rem;
-            color: var(--text-main);
-        }
+    .item { margin-bottom: 1.7rem; }
+    .item:last-child { margin-bottom: 0; }
 
-        li {
-            margin-bottom: 0.4rem;
-            line-height: 1.5;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
+    .item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1rem;
-        }
+    .item-title {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 1.05rem;
+        color: var(--text-main);
+    }
 
-        .skill-category {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-color);
-            padding: 1rem;
-            border-radius: 8px;
-        }
+    .item-subtitle {
+        color: var(--accent-human);
+        font-size: 0.9rem;
+        margin-top: 2px;
+    }
 
-        .skill-category h3 {
-            margin: 0 0 0.5rem 0;
-            font-size: 0.95rem;
-            color: var(--accent-primary);
-        }
+    .item-meta {
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        white-space: nowrap;
+    }
 
-        .skill-category p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
+    ul { margin: 0.8rem 0 0 1.2rem; }
 
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            background-color: var(--header-bg);
-            border-top: 1px solid var(--border-color);
-        }
-    </style>
+    li {
+        margin-bottom: 0.5rem;
+        line-height: 1.55;
+        font-size: 0.93rem;
+        color: var(--text-muted);
+    }
+
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.2rem;
+    }
+
+    .skill-category h3 {
+        margin: 0 0 0.7rem 0;
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        letter-spacing: 0.3px;
+        color: var(--text-main);
+        text-transform: uppercase;
+    }
+
+    .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .badge {
+        font-family: var(--font-mono);
+        background-color: rgba(255, 255, 255, 0.04);
+        color: var(--text-muted);
+        border: 1px solid var(--border-color);
+        padding: 3px 9px;
+        border-radius: 20px;
+        font-size: 0.72rem;
+    }
+
+    footer {
+        text-align: center;
+        padding: 1.8rem;
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        background-color: var(--header-bg);
+        border-top: 1px solid var(--border-color);
+    }
+
+    @media (max-width: 720px) {
+        header.site-nav { padding: 1.2rem 1.5rem; }
+        h1.page-title { font-size: 2.1rem; }
+        .resume-actions { flex-direction: column; gap: 0.8rem; align-items: flex-start; }
+    }
+</style>
 </head>
 <body>
     <canvas id="particle-canvas"></canvas>
 
-    <header>
-        <h1>Resume</h1>
-        <nav>
-            <a href="Projects.html">Projects</a>
+    <header class="site-nav">
+        <a href="index.html" class="logo">&lt;VS/&gt;</a>
+        <nav class="links">
             <a href="index.html">Home</a>
+            <a href="Projects.html">Projects</a>
+            <a href="Resume.html" class="active">Resume</a>
             <a href="Contact.html">Contact</a>
         </nav>
     </header>
 
+    <div class="page-header">
+        <p class="eyebrow">// where i've worked</p>
+        <h1 class="page-title">Resume</h1>
+    </div>
+
     <main>
         <div class="resume-actions">
-            <span>Prefer viewing the native document format?</span>
-            <a href="vaibhav_satish.pdf" class="btn" download>Download PDF</a>
+            <span>Prefer the native document?</span>
+            <a href="vaibhav_satish.pdf" class="btn-primary" download>Download PDF</a>
         </div>
 
         <!-- AUTO-GENERATED-RESUME-START -->
-<section>
-    <h2>Education</h2>
-    <div class="item">
-        <div class="item-header">
-            <span class="item-title">Bachelor of Science (B.S.) in Computer Science</span>
-            <span class="item-meta">Aug 2024 - Expected Mar 2027</span>
-        </div>
-        <div class="item-subtitle">University of California, Irvine: Donald Bren School of Information and Computer Science</div>
-        <div class="item-meta" style="margin-top: 0.3rem;">GPA: 3.873/4.0 | Achievements: Dean's Honors List (6/6 consecutive academic quarters)</div>
-    </div>
-</section>
-<section>
-    <h2> Experience</h2>
-    <div class="item" style="margin-top: 1.5rem;">
-        <div class="item-header">
-            <span class="item-title">Software Engineering / Machine Learning Intern</span>
-            <span class="item-meta">Jun 2026 - Present</span>
-        </div>
-        <div class="item-subtitle">Stealth AI &bull; Fremont, CA</div>
-        <ul>
-            <li>Designed and shipped an OpenAPI-based API documentation system that auto-generates endpoint documentation from JSDoc comments, integrated into CI/CD and adopted company-wide across 12+ endpoints by the entire development team, including the CTO and senior engineers.</li>
-            <li>Trained and iteratively tuned a Multilayer Perceptron (MLP) model pipeline outputting 13 body measurements, preprocessing training datasets ranging from 20 to 6,200 rows and reducing Mean Absolute Error (MAE) across most measurement targets through hyperparameter tuning.</li>
-            <li>Evaluated per-measurement MAE trade-offs after retraining, identifying which measurements met the accuracy bar for production deployment and flagging others with regressed accuracy for further iteration.</li>
-            <li>Extended the measurement pipeline with 8 additional geometrically-calculated length measurements and 4 additional circumference measurements via an anthropometric prior fusing system.</li>
-            <li>Seeded NeonDB and GCP Cloud SQL databases across 10+ backend endpoints and shipped an optional brand-filtering feature enabling brand-specific queries platform-wide with zero added latency.</li>
-            <li>Built a train-inference feature pipeline extracting anatomical-level image features from two-view inputs, with shared imputation and scaling so training and serving used an identical feature space.</li>
-            <li>Automated boilerplate generation and unit test writing using Cursor AI IDE and LLM prompting workflows, accelerating feature delivery timelines.</li>
-        </ul>
-    </div>
-    <div class="item" style="margin-top: 1.5rem;">
-        <div class="item-header">
-            <span class="item-title">Software Developement Research Assistant</span>
-            <span class="item-meta">Mar 2026 - Present</span>
-        </div>
-        <div class="item-subtitle">UC Irvine Charlie Dunlop School of Biological Sciences &bull; Irvine, CA</div>
-        <ul>
-            <li>Scaled the MedTech@UCI cognitive project into a formal lab partnership, integrating our cognitive game into the MindCycle app, now used in 30+ active clinical trials.</li>
-            <li>Collaborated with the UCI SLEEP Lab under Dr. Katherine Simon, building backend logging systems to track 4+ core behavioral metrics across 10+ study sessions, improving data-capture reliability.</li>
-        </ul>
-    </div>
-    <div class="item" style="margin-top: 1.5rem;">
-        <div class="item-header">
-            <span class="item-title">Software Development Co-Lead (Promoted Sep 2025)</span>
-            <span class="item-meta">Sep 2024 - Present</span>
-        </div>
-        <div class="item-subtitle">MedTech@UCI &bull; Irvine, CA</div>
-        <ul>
-            <li>Led a team of 5 engineers using Unity and C# to develop a pediatric cognitive analysis app with image-recognition and memory tools, used by 20+ patients/testers, enabling earlier detection of cognitive delays.</li>
-            <li>Designed interactive cognitive games using React and JavaScript, delivering therapeutic interfaces for dementia and Alzheimer's patients.</li>
-            <li>Engineered a React metrics-tracking engine to capture 15+ core cognitive metrics, providing clinicians with actionable analytical insights.</li>
-        </ul>
-    </div>
-    <div class="item" style="margin-top: 1.5rem;">
-        <div class="item-header">
-            <span class="item-title">Software Development Intern & Instructor</span>
-            <span class="item-meta">Jun 2025 - Aug 2025</span>
-        </div>
-        <div class="item-subtitle">Tech Academy of Minnesota &bull; Seattle, WA</div>
-        <ul>
-            <li>Delivered full-stack curriculum to 18 students, guiding web development using Python, HTML, CSS, and JavaScript.</li>
-            <li>Formulated structured debugging frameworks and 12 lab exercises, driving student project completion rates to 100% for students starting with no prior coding experience.</li>
-            <li>Translated complex software engineering paradigms into digestible concepts, providing students with a strong foundation of programming fundamentals.</li>
-        </ul>
-    </div>
-    <div class="item" style="margin-top: 1.5rem;">
-        <div class="item-header">
-            <span class="item-title">Lead AI/ML Researcher & Developer</span>
-            <span class="item-meta">May 2023 - Nov 2023</span>
-        </div>
-        <div class="item-subtitle">Collaboration with Stanford University Graduate Researchers &bull; Remote</div>
-        <ul>
-            <li>Preprocessed and engineered features from a high-dimensional, multi-modal NFL injury dataset (270,000 rows) using Pandas and NumPy, isolating critical risk factors that informed subsequent modeling.</li>
-            <li>Developed, trained, and tuned Softmax Regression and Deep Neural Network models in PyTorch and Scikit-Learn, improving predictive accuracy from a 55% baseline to 69% (+14%).</li>
-            <li>Authored technical documentation detailing model limitations and architectural bottlenecks, enabling the team to streamline the next data pipeline and reduce development time.</li>
-        </ul>
-    </div>
-    <div class="item" style="margin-top: 1.5rem;">
-        <div class="item-header">
-            <span class="item-title">Lead AI/ML Researcher & Developer</span>
-            <span class="item-meta">Jun 2023 - Aug 2023</span>
-        </div>
-        <div class="item-subtitle">Collaboration with Georgia Institute of Technology & Cornell University Graduate Researchers &bull; Remote</div>
-        <ul>
-            <li>Researched NLP and computer vision subfields using Python, Scikit-Learn, and TensorFlow, identifying techniques that reduced processing latency for vision tasks.</li>
-            <li>Implemented and benchmarked 4 computer vision models in PyTorch/TensorFlow to classify driver distraction from image and video data, achieving 80-85% validation accuracy.</li>
-            <li>Defended technical findings and architectural choices to university faculty, incorporating feedback to refine model accuracy.</li>
-        </ul>
-    </div>
-</section>
-<section>
-    <h2>Technical Skills</h2>
-    <div class="skills-grid">
-        <div class="skill-category">
-            <h3>Languages/Frameworks</h3>
-            <p>Java, Python, C++, SQL, TypeScript, JavaScript, React, Node.js, Next.js, FastAPI, REST APIs, OpenAPI, C#</p>
-        </div>
-        <div class="skill-category">
-            <h3>AI/ML Skills</h3>
-            <p>Machine Learning, Supervised/Unsupervised Learning, NLP, Computer Vision, PyTorch, TensorFlow, Scikit-Learn, Pandas, NumPy, Data Analysis</p>
-        </div>
-        <div class="skill-category">
-            <h3>Databases/Cloud Infrastructure</h3>
-            <p>MySQL, PostgreSQL, Supabase, Google Cloud Platform, Vercel</p>
-        </div>
-        <div class="skill-category">
-            <h3>Other Skills</h3>
-            <p>HTML, CSS, Docker, Git, Unity, Agile, CI/CD, Software Engineering Paradigms</p>
-        </div>
-    </div>
-</section>
-<!-- AUTO-GENERATED-RESUME-END -->
+        <section>
+            <h2>Education</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Bachelor of Science (B.S.) in Computer Science</span>
+                    <span class="item-meta">Aug 2024 - Expected Mar 2027</span>
+                </div>
+                <div class="item-subtitle">University of California, Irvine: Donald Bren School of Information and Computer Science</div>
+                <div class="item-meta" style="margin-top: 0.4rem;">GPA: 3.873/4.0 | Dean's Honors List (6/6 consecutive academic quarters)</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Experience</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Software Engineering / Machine Learning Intern</span>
+                    <span class="item-meta">Jun 2026 - Present</span>
+                </div>
+                <div class="item-subtitle">Stealth AI &bull; Fremont, CA</div>
+                <ul>
+                    <li>Designed and shipped an OpenAPI-based documentation system that auto-generates endpoint docs from JSDoc comments, integrated into CI/CD and adopted company-wide across 12+ endpoints.</li>
+                    <li>Trained and iteratively tuned a Multilayer Perceptron pipeline outputting 13 body measurements, preprocessing datasets ranging from 20 to 6,200 rows and reducing MAE across most measurement targets.</li>
+                    <li>Evaluated per-measurement MAE trade-offs after retraining, identifying which measurements met the production accuracy bar and flagging regressions for further iteration.</li>
+                    <li>Extended the measurement pipeline with 8 geometrically-calculated length measurements and 4 circumference measurements via an anthropometric prior fusion system.</li>
+                    <li>Seeded NeonDB and GCP Cloud SQL databases across 10+ backend endpoints and shipped an optional brand-filtering feature with zero added latency.</li>
+                    <li>Built a train-inference feature pipeline extracting anatomical-level image features from two-view inputs, sharing imputation and scaling so training and serving used an identical feature space.</li>
+                    <li>Automated boilerplate and unit test generation using Cursor AI IDE and LLM prompting workflows, speeding up feature delivery.</li>
+                </ul>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Software Development Research Assistant</span>
+                    <span class="item-meta">Mar 2026 - Present</span>
+                </div>
+                <div class="item-subtitle">UC Irvine Charlie Dunlop School of Biological Sciences &bull; Irvine, CA</div>
+                <ul>
+                    <li>Scaled the MedTech@UCI cognitive project into a formal lab partnership, integrating the cognitive game into the MindCycle app, now used in 30+ active clinical trials.</li>
+                    <li>Collaborated with the UCI SLEEP Lab under Dr. Katherine Simon, building backend logging systems to track 4+ core behavioral metrics across 10+ study sessions.</li>
+                </ul>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Software Development Co-Lead (Promoted Sep 2025)</span>
+                    <span class="item-meta">Sep 2024 - Present</span>
+                </div>
+                <div class="item-subtitle">MedTech@UCI &bull; Irvine, CA</div>
+                <ul>
+                    <li>Led a team of 5 engineers using Unity and C# to develop a pediatric cognitive analysis app with image-recognition and memory tools, used by 20+ patients/testers to help detect cognitive delays earlier.</li>
+                    <li>Designed interactive cognitive games in React and JavaScript, delivering therapeutic interfaces for dementia and Alzheimer's patients.</li>
+                    <li>Engineered a React metrics-tracking engine capturing 15+ core cognitive metrics for clinician-facing analytics.</li>
+                </ul>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Software Development Intern & Instructor</span>
+                    <span class="item-meta">Jun 2025 - Aug 2025</span>
+                </div>
+                <div class="item-subtitle">Tech Academy of Minnesota &bull; Seattle, WA</div>
+                <ul>
+                    <li>Delivered full-stack curriculum to 18 students, teaching web development with Python, HTML, CSS, and JavaScript.</li>
+                    <li>Built structured debugging frameworks and 12 lab exercises, bringing project completion to 100% among students with no prior coding experience.</li>
+                    <li>Translated software engineering concepts into digestible material for beginners.</li>
+                </ul>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Lead AI/ML Researcher & Developer</span>
+                    <span class="item-meta">May 2023 - Nov 2023</span>
+                </div>
+                <div class="item-subtitle">Collaboration with Stanford University Graduate Researchers &bull; Remote</div>
+                <ul>
+                    <li>Preprocessed and engineered features from a 270,000-row multi-modal NFL injury dataset using Pandas and NumPy, isolating risk factors that informed later modeling.</li>
+                    <li>Developed, trained, and tuned Softmax Regression and Deep Neural Network models in PyTorch and Scikit-Learn, improving predictive accuracy from a 55% baseline to 69%.</li>
+                    <li>Authored technical documentation on model limitations and architectural bottlenecks, streamlining the next data pipeline.</li>
+                </ul>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Lead AI/ML Researcher & Developer</span>
+                    <span class="item-meta">Jun 2023 - Aug 2023</span>
+                </div>
+                <div class="item-subtitle">Collaboration with Georgia Institute of Technology & Cornell University Graduate Researchers &bull; Remote</div>
+                <ul>
+                    <li>Researched NLP and computer vision techniques in Python, Scikit-Learn, and TensorFlow, identifying methods that reduced processing latency for vision tasks.</li>
+                    <li>Implemented and benchmarked 4 computer vision models in PyTorch/TensorFlow to classify driver distraction from image and video data, reaching 80-85% validation accuracy.</li>
+                    <li>Defended technical findings to university faculty and incorporated feedback to refine model accuracy.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages / Frameworks</h3>
+                    <div class="badge-row">
+                        <span class="badge">Java</span><span class="badge">Python</span><span class="badge">C++</span>
+                        <span class="badge">C#</span><span class="badge">SQL</span><span class="badge">TypeScript</span>
+                        <span class="badge">JavaScript</span><span class="badge">React</span><span class="badge">Node.js</span>
+                        <span class="badge">Next.js</span><span class="badge">FastAPI</span><span class="badge">REST APIs</span>
+                        <span class="badge">OpenAPI</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>AI / ML</h3>
+                    <div class="badge-row">
+                        <span class="badge">Machine Learning</span><span class="badge">Supervised/Unsupervised Learning</span>
+                        <span class="badge">NLP</span><span class="badge">Computer Vision</span><span class="badge">PyTorch</span>
+                        <span class="badge">TensorFlow</span><span class="badge">Scikit-Learn</span><span class="badge">Pandas</span>
+                        <span class="badge">NumPy</span><span class="badge">Data Analysis</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases / Cloud</h3>
+                    <div class="badge-row">
+                        <span class="badge">MySQL</span><span class="badge">PostgreSQL</span><span class="badge">Supabase</span>
+                        <span class="badge">Google Cloud Platform</span><span class="badge">Vercel</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Other</h3>
+                    <div class="badge-row">
+                        <span class="badge">HTML</span><span class="badge">CSS</span><span class="badge">Docker</span>
+                        <span class="badge">Git</span><span class="badge">Unity</span><span class="badge">Agile</span>
+                        <span class="badge">CI/CD</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- AUTO-GENERATED-RESUME-END -->
     </main>
 
-    <footer>
-        &copy; 2026 Vaibhav Satish
-    </footer>
+    <footer>&copy; 2026 Vaibhav Satish</footer>
 
     <script>
-        // Enhanced Dynamic Particle Background Script (Increased Visibility)
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
-
         let particlesArray = [];
-        const numberOfParticles = 75; // Increased particle count
+        const numberOfParticles = 60;
 
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
-
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
@@ -378,22 +457,20 @@
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2.5 + 1.2; // Slightly larger particles
-                this.speedX = (Math.random() - 0.5) * 0.9;
-                this.speedY = (Math.random() - 0.5) * 0.9;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = (Math.random() - 0.5) * 0.7;
+                this.speedY = (Math.random() - 0.5) * 0.7;
             }
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
-
                 if (this.x > canvas.width) this.x = 0;
                 else if (this.x < 0) this.x = canvas.width;
-
                 if (this.y > canvas.height) this.y = 0;
                 else if (this.y < 0) this.y = canvas.height;
             }
             draw() {
-                ctx.fillStyle = 'rgba(0, 255, 136, 0.75)'; // Higher opacity for more punch
+                ctx.fillStyle = 'rgba(0, 255, 136, 0.55)';
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -402,23 +479,20 @@
 
         function initParticles() {
             particlesArray = [];
-            for (let i = 0; i < numberOfParticles; i++) {
-                particlesArray.push(new Particle());
-            }
+            for (let i = 0; i < numberOfParticles; i++) particlesArray.push(new Particle());
         }
 
         function connectParticles() {
-            let maxDistance = 140; // Wider connection distance
+            const maxDistance = 140;
             for (let a = 0; a < particlesArray.length; a++) {
                 for (let b = a + 1; b < particlesArray.length; b++) {
-                    let dx = particlesArray[a].x - particlesArray[b].x;
-                    let dy = particlesArray[a].y - particlesArray[b].y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-
+                    const dx = particlesArray[a].x - particlesArray[b].x;
+                    const dy = particlesArray[a].y - particlesArray[b].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
                     if (distance < maxDistance) {
-                        let opacity = (1 - (distance / maxDistance)) * 0.35; // Increased line visibility
+                        const opacity = (1 - (distance / maxDistance)) * 0.22;
                         ctx.strokeStyle = `rgba(0, 255, 136, ${opacity})`;
-                        ctx.lineWidth = 1.2;
+                        ctx.lineWidth = 1;
                         ctx.beginPath();
                         ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
                         ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
@@ -430,10 +504,7 @@
 
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-                particlesArray[i].draw();
-            }
+            particlesArray.forEach(p => { p.update(); p.draw(); });
             connectParticles();
             requestAnimationFrame(animateParticles);
         }

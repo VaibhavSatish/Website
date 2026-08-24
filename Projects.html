@@ -1,247 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vaibhav Satish - Projects</title>
-    <style>
-        :root {
-            --bg-color: #090a0f;
-            --header-bg: #0d0e15;
-            --card-bg: rgba(20, 21, 33, 0.65);
-            --accent-primary: #00ff88;
-            --accent-glow: rgba(0, 255, 136, 0.25);
-            --text-main: #ededf4;
-            --text-muted: #8c8fa3;
-            --border-color: rgba(255, 255, 255, 0.08);
-            --border-glow: rgba(0, 255, 136, 0.5);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vaibhav Satish - Projects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg-color: #090a0f;
+        --header-bg: #0d0e15;
+        --card-bg: rgba(20, 21, 33, 0.65);
+        --accent-code: #00ff88;
+        --accent-code-glow: rgba(0, 255, 136, 0.22);
+        --accent-human: #ffb454;
+        --accent-human-glow: rgba(255, 180, 84, 0.22);
+        --text-main: #ededf4;
+        --text-muted: #8c8fa3;
+        --border-color: rgba(255, 255, 255, 0.08);
+        --font-display: 'Space Grotesk', system-ui, sans-serif;
+        --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+        --font-body: 'Inter', system-ui, sans-serif;
+    }
 
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            scroll-behavior: smooth;
-        }
+    * { box-sizing: border-box; }
 
-        header {
-            padding: 3rem 1rem 2.5rem 1rem;
-            background: var(--header-bg);
-            border-bottom: 2px solid var(--border-color);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            position: relative;
-        }
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        font-family: var(--font-body);
+        scroll-behavior: smooth;
+    }
 
-        /* Ambient glow behind header title */
-        header::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 250px;
-            height: 60px;
-            background: var(--accent-primary);
-            filter: blur(65px);
-            opacity: 0.15;
-            z-index: 0;
-            pointer-events: none;
-        }
+    /* ---------- Nav (matches homepage) ---------- */
+    header.site-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem 2.5rem;
+        background: var(--header-bg);
+        border-bottom: 1px solid var(--border-color);
+    }
 
-        header h1 {
-            position: relative;
-            z-index: 1;
-            font-family: inherit;
-            color: var(--text-main);
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin: 0 0 1rem 0;
-            letter-spacing: -0.5px;
-        }
+    .logo {
+        font-family: var(--font-mono);
+        font-size: 1.05rem;
+        color: var(--accent-code);
+        letter-spacing: 0.5px;
+        text-decoration: none;
+    }
 
-        nav {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            margin-top: 1rem;
-        }
+    nav.links { display: flex; gap: 2rem; }
 
-        nav a {
-            margin: 0 1.2rem;
-            text-decoration: none;
-            color: var(--text-muted);
-            font-weight: 500;
-            font-size: 1rem;
-            transition: color 0.2s ease, text-shadow 0.2s ease;
-        }
+    nav.links a {
+        position: relative;
+        text-decoration: none;
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        letter-spacing: 0.3px;
+        padding-bottom: 4px;
+        transition: color 0.2s ease;
+    }
 
-        nav a:hover {
-            color: var(--accent-primary);
-            text-shadow: 0 0 10px var(--accent-glow);
-        }
+    nav.links a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0%;
+        height: 1.5px;
+        background: var(--accent-code);
+        transition: width 0.25s ease;
+    }
 
-        main {
-            max-width: 1050px;
-            width: 90%;
-            margin: 3.5rem auto;
-            padding: 1rem;
-            flex: 1;
-        }
+    nav.links a:hover { color: var(--text-main); }
+    nav.links a:hover::after { width: 100%; }
+    nav.links a.active { color: var(--accent-code); }
+    nav.links a.active::after { width: 100%; }
 
-        .intro-text {
-            color: var(--text-muted);
-            font-size: 1.15rem;
-            letter-spacing: -0.2px;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
+    /* ---------- Page header ---------- */
+    .page-header {
+        max-width: 1050px;
+        width: 90%;
+        margin: 3rem auto 0 auto;
+        padding: 0 1rem;
+        text-align: left;
+    }
 
-        .intro-text b {
-            color: var(--text-main);
-        }
+    .eyebrow {
+        font-family: var(--font-mono);
+        color: var(--accent-code);
+        font-size: 0.9rem;
+        margin: 0 0 0.7rem 0;
+    }
 
-        hr {
-            border: none;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
-            margin-bottom: 3.5rem;
-        }
+    h1.page-title {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 2.6rem;
+        letter-spacing: -0.5px;
+        margin: 0 0 0.8rem 0;
+    }
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
+    .intro-text {
+        color: var(--text-muted);
+        font-size: 1.05rem;
+        line-height: 1.6;
+        max-width: 640px;
+        margin: 0 0 2rem 0;
+    }
 
-        .project-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
-            
-            /* Staggered load animation */
-            opacity: 0;
-            transform: translateY(20px);
-            animation: cardEntrance 0.6s ease forwards;
-        }
+    /* ---------- Filter tabs ---------- */
+    .filter-row {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        margin-bottom: 2.5rem;
+    }
 
-        .project-card:nth-child(1) { animation-delay: 0.1s; }
-        .project-card:nth-child(2) { animation-delay: 0.2s; }
-        .project-card:nth-child(3) { animation-delay: 0.3s; }
-        .project-card:nth-child(4) { animation-delay: 0.4s; }
-        .project-card:nth-child(5) { animation-delay: 0.5s; }
+    .filter-btn {
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        background: transparent;
+        border: 1px solid var(--border-color);
+        color: var(--text-muted);
+        padding: 0.5rem 1rem;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
 
-        @keyframes cardEntrance {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .filter-btn:hover { color: var(--text-main); border-color: var(--accent-code); }
 
-        .project-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--border-glow);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px var(--accent-glow), inset 0 1px 0 rgba(0, 255, 136, 0.3);
-        }
+    .filter-btn.active {
+        color: #05130c;
+        background: var(--accent-code);
+        border-color: var(--accent-code);
+        font-weight: 500;
+    }
 
-        .project-title {
-            font-family: inherit;
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--text-main);
-            margin-bottom: 12px;
-            letter-spacing: -0.3px;
-        }
+    main {
+        max-width: 1050px;
+        width: 90%;
+        margin: 0 auto;
+        padding: 0 1rem 2rem 1rem;
+        flex: 1;
+    }
 
-        .badge-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid var(--border-color);
-        }
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
 
-        .badge {
-            background-color: rgba(0, 255, 136, 0.05);
-            color: var(--accent-primary);
-            border: 1px solid rgba(0, 255, 136, 0.15);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
-        }
+    .project-card {
+        background-color: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        padding: 28px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(12px);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.25s ease;
+        opacity: 0;
+        transform: translateY(16px);
+        animation: cardEntrance 0.5s ease forwards;
+    }
 
-        .badge:hover {
-            background-color: rgba(0, 255, 136, 0.15);
-            border-color: var(--accent-primary);
-            transform: translateY(-2px);
-        }
+    .project-card:nth-child(1) { animation-delay: 0.05s; }
+    .project-card:nth-child(2) { animation-delay: 0.1s; }
+    .project-card:nth-child(3) { animation-delay: 0.15s; }
+    .project-card:nth-child(4) { animation-delay: 0.2s; }
+    .project-card:nth-child(5) { animation-delay: 0.25s; }
 
-        .project-description {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.7;
-            flex-grow: 1;
-        }
+    @keyframes cardEntrance {
+        to { opacity: 1; transform: translateY(0); }
+    }
 
-        .project-description a {
-            color: var(--accent-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
+    .project-card.hidden {
+        display: none;
+    }
 
-        .project-description a:hover {
-            text-shadow: 0 0 8px var(--accent-glow);
-            text-decoration: underline;
-        }
+    .project-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-code);
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 25px var(--accent-code-glow);
+    }
 
-        footer {
-            background-color: var(--header-bg);
-            width: 100%;
-            text-align: center;
-            padding: 2.5rem 0;
-            font-family: inherit;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            border-top: 1px solid var(--border-color);
-        }
-    </style>
+    .card-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 12px;
+    }
+
+    .project-title {
+        font-family: var(--font-display);
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text-main);
+        letter-spacing: -0.2px;
+    }
+
+    .category-tag {
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        padding: 3px 9px;
+        border-radius: 999px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .category-tag.web { color: var(--accent-code); border: 1px solid rgba(0,255,136,0.3); background: rgba(0,255,136,0.06); }
+    .category-tag.game { color: var(--accent-human); border: 1px solid rgba(255,180,84,0.3); background: rgba(255,180,84,0.06); }
+    .category-tag.ml { color: var(--accent-human); border: 1px solid rgba(255,180,84,0.3); background: rgba(255,180,84,0.06); }
+
+    .badge-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 14px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .badge {
+        font-family: var(--font-mono);
+        background-color: rgba(255, 255, 255, 0.04);
+        color: var(--text-muted);
+        border: 1px solid var(--border-color);
+        padding: 3px 9px;
+        border-radius: 20px;
+        font-size: 0.7rem;
+    }
+
+    .project-description {
+        color: var(--text-muted);
+        font-size: 0.93rem;
+        line-height: 1.65;
+        flex-grow: 1;
+    }
+
+    .project-description a {
+        color: var(--accent-code);
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .project-description a:hover { text-decoration: underline; }
+
+    footer {
+        background-color: var(--header-bg);
+        width: 100%;
+        text-align: center;
+        padding: 2rem 0;
+        font-family: var(--font-mono);
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        border-top: 1px solid var(--border-color);
+    }
+
+    @media (max-width: 720px) {
+        header.site-nav { padding: 1.2rem 1.5rem; }
+        h1.page-title { font-size: 2.1rem; }
+    }
+</style>
 </head>
 <body>
 
-<header>
-    <h1>My Projects</h1>
-    <nav>
-        <a href="Resume.html">Resume</a>
+<header class="site-nav">
+    <a href="index.html" class="logo">&lt;VS/&gt;</a>
+    <nav class="links">
         <a href="index.html">Home</a>
+        <a href="Projects.html" class="active">Projects</a>
+        <a href="Resume.html">Resume</a>
         <a href="Contact.html">Contact</a>
     </nav>
 </header>
 
-<main>
-    <div class="intro-text">
-        <b>Explore my engineering and development portfolio below!</b>
+<div class="page-header">
+    <p class="eyebrow">// what i've built</p>
+    <h1 class="page-title">Projects</h1>
+    <p class="intro-text">A mix of full-stack apps, a game, and a machine learning project — mostly built for hackathons, coursework, or because I wanted to see if I could.</p>
+    <div class="filter-row" id="filter-row">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="game">Game</button>
+        <button class="filter-btn" data-filter="ml">ML</button>
     </div>
-    <hr>
+</div>
 
-    <div class="projects-grid">
-        <div class="project-card">
-            <div class="project-title">UCI Themed Geoguessr</div>
+<main>
+    <div class="projects-grid" id="projects-grid">
+
+        <div class="project-card" data-category="web game">
+            <div class="card-top">
+                <div class="project-title">UCI Themed Geoguessr</div>
+                <span class="category-tag web">Web</span>
+            </div>
             <div class="badge-container">
                 <span class="badge">React</span>
                 <span class="badge">Node.js</span>
@@ -251,40 +316,48 @@
                 <span class="badge">Vercel</span>
                 <span class="badge">Leaflet</span>
                 <span class="badge">Docker</span>
-                <span class="badge">Google Cloud Platform</span>
+                <span class="badge">GCP</span>
             </div>
             <div class="project-description">
-                A cutting-edge, campus-themed version of the popular game Geoguessr featuring immersive locations across the University of California, Irvine. Led a 4-person engineering team from system architecture ideation through production deployment, managing rigorous Git workflows. Implemented custom mathematical scoring algorithms and integrated OpenStreetMap APIs to ensure sub-second asset rendering. Architected a high-performance, asynchronous C++ backend using the Crow API to minimize gameplay latency and seamlessly handle concurrent state updates. Explore the codebase at this <a href="https://github.com/VaibhavSatish/UCIGeoGuesser" target="_blank">link</a>!
+                A GeoGuessr clone built around UCI's campus. I led a 4-person team from system design through deployment, managing the Git workflow along the way. Built an asynchronous C++ backend on the Crow API to keep scoring low-latency under concurrent state updates, and integrated OpenStreetMap for sub-second location rendering. Code's on <a href="https://github.com/VaibhavSatish/UCIGeoGuesser" target="_blank">GitHub</a>.
             </div>
         </div>
 
-        <div class="project-card">
-            <div class="project-title">Portfolio Website</div>
+        <div class="project-card" data-category="web">
+            <div class="card-top">
+                <div class="project-title">Portfolio Website</div>
+                <span class="category-tag web">Web</span>
+            </div>
             <div class="badge-container">
                 <span class="badge">HTML</span>
                 <span class="badge">CSS</span>
                 <span class="badge">JavaScript</span>
-                <span class="badge">Responsive Design</span>
             </div>
             <div class="project-description">
-                A fully responsive, highly-styled personal portfolio engineered from scratch to showcase advanced frontend capabilities, clean component architecture, and seamless interactive UX. Features custom dark-mode aesthetics, fluid transitions, and accessible design principles. If you're reading this, you've successfully navigated into the live production environment!
+                This site. Built from scratch — dark theme, an interactive particle background, and a component structure I keep coming back to iterate on. If you're reading this, it's live and working.
             </div>
         </div>
 
-        <div class="project-card">
-            <div class="project-title">Mage Runner</div>
+        <div class="project-card" data-category="game">
+            <div class="card-top">
+                <div class="project-title">Mage Runner</div>
+                <span class="category-tag game">Game</span>
+            </div>
             <div class="badge-container">
                 <span class="badge">Unity</span>
                 <span class="badge">C#</span>
                 <span class="badge">Game Physics</span>
             </div>
             <div class="project-description">
-                An immersive multi-level, interactive game challenging players to navigate an intricate, complex maze filled with dynamic obstacles, shifting pathways, and real-time physics interactions at every turn. Built with robust script architecture and optimized rendering pipelines. Discover more about the game mechanics at this <a href="https://github.com/FaCiLeXp/PVE-FPS-B/tree/main/PVE%20FPS%20B" target="_blank">link</a>!
+                A multi-level maze game with dynamic obstacles, shifting pathways, and real-time physics interactions. Built with a scripted level architecture designed to keep the rendering pipeline efficient as complexity scales. More on <a href="https://github.com/FaCiLeXp/PVE-FPS-B/tree/main/PVE%20FPS%20B" target="_blank">GitHub</a>.
             </div>
         </div>
 
-        <div class="project-card">
-            <div class="project-title">ZOTNest</div>
+        <div class="project-card" data-category="web">
+            <div class="card-top">
+                <div class="project-title">ZOTNest</div>
+                <span class="category-tag web">Web</span>
+            </div>
             <div class="badge-container">
                 <span class="badge">React</span>
                 <span class="badge">Python</span>
@@ -292,12 +365,15 @@
                 <span class="badge">Leaflet</span>
             </div>
             <div class="project-description">
-                A premier full-stack property search web application developed for UC Irvine's 2026 Irvine Hacks Hackathon, built to streamline housing discovery for over 30,000+ UCI students. Integrated the Leaflet map API to deliver seamless, real-time location mapping and interactive visual clustering of 30+ local properties. Engineered sophisticated multi-criteria filtering algorithms to compute dynamic, context-aware property recommendations based on custom user vector preferences. Developed an automated Python data ingestion pipeline to scrape and parse 500+ Google Maps reviews, converting unstructured text into qualitative UI insights. More at this <a href="https://github.com/VaibhavSatish/ZOTNest" target="_blank">link</a>
+                A property search tool built at UC Irvine's 2026 Irvine Hacks, aimed at helping the university's 30,000+ students find housing. Maps 30+ listings with real-time clustering via Leaflet, ranks results with a multi-criteria filtering algorithm built around user preferences, and runs a Python pipeline that scrapes and parses 500+ Google Maps reviews into readable insights. More on <a href="https://github.com/VaibhavSatish/ZOTNest" target="_blank">GitHub</a>.
             </div>
         </div>
 
-        <div class="project-card">
-            <div class="project-title">Driver Delineation</div>
+        <div class="project-card" data-category="ml">
+            <div class="card-top">
+                <div class="project-title">Driver Delineation</div>
+                <span class="category-tag ml">ML</span>
+            </div>
             <div class="badge-container">
                 <span class="badge">Python</span>
                 <span class="badge">PyTorch</span>
@@ -306,15 +382,36 @@
                 <span class="badge">NumPy</span>
             </div>
             <div class="project-description">
-                An advanced machine learning solution developed for UC Irvine's 2025 Datathon, engineered to accurately predict driver behavioral likelihood from high-dimensional datasets. Executed rigorous feature engineering and selection protocols across 40+ impact variables to systematically mitigate model overfitting and maximize predictive generalizability. Designed, trained, and optimized a multi-layer Deep Neural Network (DNN) in TensorFlow, carefully tuning core hyper-parameters to achieve an exceptional 90% validation accuracy. More at this <a href="https://github.com/sidsun1/DriverDelineation" target="_blank">link</a>
+                Built for UC Irvine's 2025 Datathon to predict driver behavior from a high-dimensional dataset. Ran feature selection across 40+ variables to cut overfitting, then trained a deep neural net in TensorFlow, tuning hyperparameters to reach 90% validation accuracy. More on <a href="https://github.com/sidsun1/DriverDelineation" target="_blank">GitHub</a>.
             </div>
         </div>
+
     </div>
 </main>
 
-<footer>
-    &copy; 2025 Vaibhav Satish
-</footer>
+<footer>&copy; 2025 Vaibhav Satish</footer>
+
+<script>
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
+
+            cards.forEach(card => {
+                const categories = card.dataset.category.split(' ');
+                if (filter === 'all' || categories.includes(filter)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+    });
+</script>
 
 </body>
 </html>
