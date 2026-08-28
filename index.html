@@ -15,6 +15,10 @@
         --accent-code-glow: rgba(0, 255, 136, 0.22);
         --accent-human: #ffb454;
         --accent-human-glow: rgba(255, 180, 84, 0.22);
+        --accent-blue: #00eeff;
+        --accent-blue-glow: rgba(0, 238, 255, 0.22);
+        --accent-red: #ff5f56;
+        --accent-red-glow: rgba(255, 95, 86, 0.22);
         --text-main: #ededf4;
         --text-muted: #8c8fa3;
         --border-color: rgba(255, 255, 255, 0.12);
@@ -168,6 +172,12 @@
         font-weight: 600;
     }
 
+    .btn-primary-resume {
+        background: rgb(0, 238, 255);
+        color: #05130c;
+        font-weight: 600;
+    }
+
     .btn-primary:hover {
         transform: translateY(-2px);
         box-shadow: 0 10px 25px var(--accent-code-glow);
@@ -283,6 +293,7 @@
         <p class="tagline">Software developer who spends the rest of the time chasing scores on the field and melodies on repeat. I build things, mostly on purpose.</p>
         <div class="cta-row">
             <a href="Projects.html" class="btn btn-primary">View Projects</a>
+            <a href="Resume.html" class="btn btn-primary-resume"> View my Experiences</a>
             <a href="Contact.html" class="btn btn-outline">Get in Touch</a>
         </div>
     </div>
@@ -384,11 +395,10 @@
     animateParticles();
 
     // ---------- Terminal Tabs (signature element) ----------
-    // Personalize the descriptions below — these are placeholders.
     const facets = [
         {
             tab: 'sports.ts',
-            color: 'human',
+            color: 'var(--accent-human)', // Orange
             lines: [
                 { comment: '// currently invested in' },
                 { text: 'const team = "Seattle Seahawks";' },
@@ -397,7 +407,7 @@
         },
         {
             tab: 'music.ts',
-            color: 'code',
+            color: 'var(--accent-code)', // Green
             lines: [
                 { comment: '// plays' },
                 { text: 'const instrument = "Drumset";' },
@@ -406,7 +416,7 @@
         },
         {
             tab: 'listening.ts',
-            color: 'human',
+            color: 'var(--accent-blue)', // Blue
             lines: [
                 { comment: '// on repeat this week' },
                 { text: 'const playlist = "Any Song, Any Genre, Any Language!";' },
@@ -415,7 +425,7 @@
         },
         {
             tab: 'dev.ts',
-            color: 'code',
+            color: 'var(--accent-red)', // Red
             lines: [
                 { comment: '// building right now' },
                 { text: 'console.log("shipping something new");' },
@@ -427,41 +437,102 @@
     const tabsEl = document.getElementById('terminal-tabs');
     const bodyEl = document.getElementById('terminal-body');
     let activeIndex = 0;
+    let typingTimeout = null;
+    let cycleInterval = null;
 
-    function render() {
+    function renderTabs() {
         tabsEl.innerHTML = facets.map((f, i) => {
             const active = i === activeIndex;
-            const color = f.color === 'code' ? 'var(--accent-code)' : 'var(--accent-human)';
+            const color = f.color;
             return `<button class="tab-btn${active ? ' active' : ''}" style="border-color:${active ? color : 'transparent'}" data-index="${i}">${f.tab}</button>`;
-        }).join('');
-
-        const facet = facets[activeIndex];
-        const color = facet.color === 'code' ? 'var(--accent-code)' : 'var(--accent-human)';
-        bodyEl.innerHTML = facet.lines.map((l, i) => {
-            const isLast = i === facet.lines.length - 1;
-            if (l.comment) return `<div class="comment">${l.comment}</div>`;
-            return `<div style="color:${color}">${l.text}${isLast ? '<span class="cursor" style="color:' + color + '"></span>' : ''}</div>`;
         }).join('');
 
         tabsEl.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 activeIndex = parseInt(btn.dataset.index);
-                render();
+                renderTabs();
+                startTypingAnimation();
                 restartCycle();
             });
         });
     }
 
-    let cycleInterval;
+    function startTypingAnimation() {
+        if (typingTimeout) clearTimeout(typingTimeout);
+
+        const facet = facets[activeIndex];
+        const color = facet.color;
+        
+        let currentLineIndex = 0;
+        let currentCharIndex = 0;
+        let renderedLines = [];
+
+        function typeStep() {
+            if (currentLineIndex >= facet.lines.length) return;
+
+            const lineObj = facet.lines[currentLineIndex];
+            
+            if (lineObj.comment) {
+                // Comments appear instantly line by line
+                renderedLines.push({ type: 'comment', text: lineObj.comment });
+                currentLineIndex++;
+                currentCharIndex = 0;
+                updateDOM(renderedLines, currentLineIndex < facet.lines.length, color);
+                typingTimeout = setTimeout(typeStep, 150);
+            } else {
+                // Code lines type out character by character
+                const textToType = lineObj.text;
+                const partialText = textToType.substring(0, currentCharIndex + 1);
+                
+                // Build current state of lines
+                let tempLines = [...renderedLines];
+                tempLines.push({ type: 'code', text: partialText });
+                
+                currentCharIndex++;
+                const isLineFinished = currentCharIndex > textToType.length;
+
+                updateDOM(tempLines, true, color);
+
+                if (isLineFinished) {
+                    renderedLines.push({ type: 'code', text: textToType });
+                    currentLineIndex++;
+                    currentCharIndex = 0;
+                    typingTimeout = setTimeout(typeStep, 250); // Pause briefly before next line
+                } else {
+                    typingTimeout = setTimeout(typeStep, 35); // Typing speed per character
+                }
+            }
+        }
+
+        // Initial blank start before typing
+        updateDOM([], true, color);
+        typingTimeout = setTimeout(typeStep, 100);
+    }
+
+    function updateDOM(lines, showCursor, color) {
+        bodyEl.innerHTML = lines.map((l, i) => {
+            const isLast = i === lines.length - 1;
+            const cursorHtml = (isLast && showCursor) ? `<span class="cursor" style="color:${color}"></span>` : '';
+            
+            if (l.type === 'comment') {
+                return `<div class="comment">${l.text}</div>`;
+            }
+            return `<div style="color:${color}">${l.text}${cursorHtml}</div>`;
+        }).join('') + (lines.length === 0 && showCursor ? `<div style="color:${color}"><span class="cursor" style="color:${color}"></span></div>` : '');
+    }
+
     function restartCycle() {
-        clearInterval(cycleInterval);
+        if (cycleInterval) clearInterval(cycleInterval);
         cycleInterval = setInterval(() => {
             activeIndex = (activeIndex + 1) % facets.length;
-            render();
+            renderTabs();
+            startTypingAnimation();
         }, 4500);
     }
 
-    render();
+    // Initial load
+    renderTabs();
+    startTypingAnimation();
     restartCycle();
 </script>
 </body>
