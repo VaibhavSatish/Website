@@ -199,7 +199,7 @@
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
-        gap: 10px;
+        gap: 12px;
         margin-bottom: 12px;
     }
 
@@ -209,6 +209,16 @@
         font-weight: 600;
         color: var(--text-main);
         letter-spacing: -0.2px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .category-tags {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        flex-shrink: 0;
     }
 
     .category-tag {
@@ -305,8 +315,10 @@
         <div class="project-card" data-category="web game">
             <div class="card-top">
                 <div class="project-title">UCI Themed Geoguessr</div>
-                <span class="category-tag web">Web</span>
-                <span class="category-tag game">Game</span>
+                <div class="category-tags">
+                    <span class="category-tag web">Web</span>
+                    <span class="category-tag game">Game</span>
+                </div>
             </div>
             <div class="badge-container">
                 <span class="badge">React</span>
@@ -327,7 +339,9 @@
         <div class="project-card" data-category="web">
             <div class="card-top">
                 <div class="project-title">Portfolio Website</div>
-                <span class="category-tag web">Web</span>
+                <div class="category-tags">
+                    <span class="category-tag web">Web</span>
+                </div>
             </div>
             <div class="badge-container">
                 <span class="badge">HTML</span>
@@ -342,7 +356,9 @@
         <div class="project-card" data-category="game">
             <div class="card-top">
                 <div class="project-title">Mage Runner</div>
-                <span class="category-tag game">Game</span>
+                <div class="category-tags">
+                    <span class="category-tag game">Game</span>
+                </div>
             </div>
             <div class="badge-container">
                 <span class="badge">Unity</span>
@@ -354,11 +370,13 @@
             </div>
         </div>
 
-        <div class="project-card" data-category="web">
+        <div class="project-card" data-category="web ml">
             <div class="card-top">
                 <div class="project-title">ZOTNest</div>
-                <span class="category-tag web">Web</span>
-                <span class = "category-tag ml">ML</span>
+                <div class="category-tags">
+                    <span class="category-tag web">Web</span>
+                    <span class="category-tag ml">ML</span>
+                </div>
             </div>
             <div class="badge-container">
                 <span class="badge">React</span>
@@ -374,7 +392,9 @@
         <div class="project-card" data-category="ml">
             <div class="card-top">
                 <div class="project-title">Driver Delineation</div>
-                <span class="category-tag ml">ML</span>
+                <div class="category-tags">
+                    <span class="category-tag ml">ML</span>
+                </div>
             </div>
             <div class="badge-container">
                 <span class="badge">Python</span>
