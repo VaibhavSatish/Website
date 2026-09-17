@@ -19,6 +19,7 @@
         --accent-blue-glow: rgba(0, 238, 255, 0.22);
         --accent-red: #ff5f56;
         --accent-red-glow: rgba(255, 95, 86, 0.22);
+        --accent-purple: #b57edc;
         --text-main: #ededf4;
         --text-muted: #8c8fa3;
         --border-color: rgba(255, 255, 255, 0.12);
@@ -70,6 +71,7 @@
         font-size: 1.05rem;
         color: var(--accent-code);
         letter-spacing: 0.5px;
+        text-decoration: none;
     }
 
     nav.links { display: flex; gap: 2rem; }
@@ -77,7 +79,7 @@
     nav.links a {
         position: relative;
         text-decoration: none;
-        color: var(--text-muted);
+        color: var(--text-muted); /* Default Gray */
         font-family: var(--font-mono);
         font-size: 0.85rem;
         letter-spacing: 0.3px;
@@ -92,14 +94,62 @@
         bottom: 0;
         width: 0%;
         height: 1.5px;
-        background: var(--accent-code);
-        transition: width 0.25s ease;
+        transition: width 0.25s ease, background-color 0.25s ease;
     }
 
-    nav.links a:hover { color: var(--text-main); }
-    nav.links a:hover::after { width: 100%; }
-    nav.links a.active { color: var(--accent-code); }
+    nav.links a:hover::after,
     nav.links a.active::after { width: 100%; }
+
+    /* ---------- Hover & active colors ---------- */
+    /* Home - Green */
+    nav.links a:nth-child(1):hover,
+    nav.links a:nth-child(1).active {
+        color: var(--accent-code);
+    }
+    nav.links a:nth-child(1):hover::after,
+    nav.links a:nth-child(1).active::after {
+        background: var(--accent-code);
+    }
+
+    /* Projects - Orange */
+    nav.links a:nth-child(2):hover,
+    nav.links a:nth-child(2).active {
+        color: var(--accent-human);
+    }
+    nav.links a:nth-child(2):hover::after,
+    nav.links a:nth-child(2).active::after {
+        background: var(--accent-human);
+    }
+
+    /* Resume - Blue */
+    nav.links a:nth-child(3):hover,
+    nav.links a:nth-child(3).active {
+        color: var(--accent-blue);
+    }
+    nav.links a:nth-child(3):hover::after,
+    nav.links a:nth-child(3).active::after {
+        background: var(--accent-blue);
+    }
+
+    /* Archives - Red */
+    nav.links a:nth-child(4):hover,
+    nav.links a:nth-child(4).active {
+        color: var(--accent-red);
+    }
+    nav.links a:nth-child(4):hover::after,
+    nav.links a:nth-child(4).active::after {
+        background: var(--accent-red);
+    }
+
+    /* Contact - Purple */
+    nav.links a:nth-child(5):hover,
+    nav.links a:nth-child(5).active {
+        color: var(--accent-purple);
+    }
+    nav.links a:nth-child(5):hover::after,
+    nav.links a:nth-child(5).active::after {
+        background: var(--accent-purple);
+    }
 
     /* ---------- Hero ---------- */
     main.hero {
@@ -282,6 +332,7 @@
         <a href="index.html" class="active">Home</a>
         <a href="Projects.html">Projects</a>
         <a href="Resume.html">Resume</a>
+        <a href="Documents.html">Archives</a>
         <a href="Contact.html">Contact</a>
     </nav>
 </header>
@@ -398,7 +449,7 @@
     const facets = [
         {
             tab: 'sports.ts',
-            color: 'var(--accent-human)', // Orange
+            color: 'var(--accent-human)',
             lines: [
                 { comment: '// currently invested in' },
                 { text: 'const team = "Seattle Seahawks";' },
@@ -407,7 +458,7 @@
         },
         {
             tab: 'music.ts',
-            color: 'var(--accent-code)', // Green
+            color: 'var(--accent-code)',
             lines: [
                 { comment: '// plays' },
                 { text: 'const instrument = "Drumset";' },
@@ -416,7 +467,7 @@
         },
         {
             tab: 'listening.ts',
-            color: 'var(--accent-blue)', // Blue
+            color: 'var(--accent-blue)',
             lines: [
                 { comment: '// on repeat this week' },
                 { text: 'const playlist = "Any Song, Any Genre, Any Language!";' },
@@ -425,7 +476,7 @@
         },
         {
             tab: 'dev.ts',
-            color: 'var(--accent-red)', // Red
+            color: 'var(--accent-red)',
             lines: [
                 { comment: '// building right now' },
                 { text: 'console.log("shipping something new");' },
@@ -473,18 +524,15 @@
             const lineObj = facet.lines[currentLineIndex];
             
             if (lineObj.comment) {
-                // Comments appear instantly line by line
                 renderedLines.push({ type: 'comment', text: lineObj.comment });
                 currentLineIndex++;
                 currentCharIndex = 0;
                 updateDOM(renderedLines, currentLineIndex < facet.lines.length, color);
                 typingTimeout = setTimeout(typeStep, 150);
             } else {
-                // Code lines type out character by character
                 const textToType = lineObj.text;
                 const partialText = textToType.substring(0, currentCharIndex + 1);
                 
-                // Build current state of lines
                 let tempLines = [...renderedLines];
                 tempLines.push({ type: 'code', text: partialText });
                 
@@ -497,14 +545,13 @@
                     renderedLines.push({ type: 'code', text: textToType });
                     currentLineIndex++;
                     currentCharIndex = 0;
-                    typingTimeout = setTimeout(typeStep, 250); // Pause briefly before next line
+                    typingTimeout = setTimeout(typeStep, 250);
                 } else {
-                    typingTimeout = setTimeout(typeStep, 35); // Typing speed per character
+                    typingTimeout = setTimeout(typeStep, 35);
                 }
             }
         }
 
-        // Initial blank start before typing
         updateDOM([], true, color);
         typingTimeout = setTimeout(typeStep, 100);
     }
@@ -530,7 +577,6 @@
         }, 4500);
     }
 
-    // Initial load
     renderTabs();
     startTypingAnimation();
     restartCycle();

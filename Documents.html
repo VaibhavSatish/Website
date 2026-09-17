@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vaibhav Satish - Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --bg-color: #090a0f;
+        --header-bg: #0d0e15;
+        --card-bg: rgba(20, 21, 33, 0.65);
+        --accent-code: #00ff88;
+        --accent-code-glow: rgba(0, 255, 136, 0.22);
+        --accent-human: #ffb454;
+        --accent-human-glow: rgba(255, 180, 84, 0.22);
+        --accent-blue: #00eeff;
+        --accent-red: #ff5f56;
+        --accent-purple: #b57edc;
+        --text-main: #ededf4;
+        --text-muted: #8c8fa3;
+        --border-color: rgba(255, 255, 255, 0.08);
+        --font-display: 'Space Grotesk', system-ui, sans-serif;
+        --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+        --font-body: 'Inter', system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+        background-color: var(--bg-color);
+        font-family: var(--font-body);
+        color: var(--text-main);
+    }
+
+    /* ---------- Header (Always Visible) ---------- */
+    header.site-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem 2.5rem;
+        background: var(--header-bg);
+        border-bottom: 1px solid var(--border-color);
+        position: sticky;
+        top: 0;
+        z-index: 10000;
+    }
+
+    .logo {
+        font-family: var(--font-mono);
+        font-size: 1.05rem;
+        color: var(--accent-code);
+        letter-spacing: 0.5px;
+        text-decoration: none;
+    }
+
+    nav.links { display: flex; gap: 2rem; }
+
+    nav.links a {
+        position: relative;
+        text-decoration: none;
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        letter-spacing: 0.3px;
+        padding-bottom: 4px;
+        transition: color 0.2s ease;
+    }
+
+    nav.links a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0%;
+        height: 1.5px;
+        transition: width 0.25s ease, background-color 0.25s ease;
+    }
+
+    nav.links a:hover::after,
+    nav.links a.active::after { width: 100%; }
+
+    /* ---------- Hover & active colors ---------- */
+    /* Home - Green */
+    nav.links a:nth-child(1):hover,
+    nav.links a:nth-child(1).active {
+        color: var(--accent-code);
+    }
+    nav.links a:nth-child(1):hover::after,
+    nav.links a:nth-child(1).active::after {
+        background: var(--accent-code);
+    }
+
+    /* Projects - Orange */
+    nav.links a:nth-child(2):hover,
+    nav.links a:nth-child(2).active {
+        color: var(--accent-human);
+    }
+    nav.links a:nth-child(2):hover::after,
+    nav.links a:nth-child(2).active::after {
+        background: var(--accent-human);
+    }
+
+    /* Resume - Blue */
+    nav.links a:nth-child(3):hover,
+    nav.links a:nth-child(3).active {
+        color: var(--accent-blue);
+    }
+    nav.links a:nth-child(3):hover::after,
+    nav.links a:nth-child(3).active::after {
+        background: var(--accent-blue);
+    }
+
+    /* Archives - Red */
+    nav.links a:nth-child(4):hover,
+    nav.links a:nth-child(4).active {
+        color: var(--accent-red);
+    }
+    nav.links a:nth-child(4):hover::after,
+    nav.links a:nth-child(4).active::after {
+        background: var(--accent-red);
+    }
+
+    /* Contact - Purple */
+    nav.links a:nth-child(5):hover,
+    nav.links a:nth-child(5).active {
+        color: var(--accent-purple);
+    }
+    nav.links a:nth-child(5):hover::after,
+    nav.links a:nth-child(5).active::after {
+        background: var(--accent-purple);
+    }
+
+    /* ---------- Password Modal Overlay ---------- */
+    #password-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--bg-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    }
+
+    .login-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        backdrop-filter: blur(10px);
+        padding: 2.5rem;
+        border-radius: 16px;
+        width: 90%;
+        max-width: 400px;
+        text-align: center;
+    }
+
+    .login-card h2 {
+        font-family: var(--font-mono);
+        color: var(--accent-code);
+        font-size: 1.2rem;
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+
+    .login-card input[type="password"] {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        background: #0d0e15;
+        color: var(--text-main);
+        font-family: var(--font-mono);
+        margin-bottom: 1rem;
+        outline: none;
+    }
+
+    .login-card input[type="password"]:focus {
+        border-color: var(--accent-code);
+    }
+
+    .login-card button {
+        width: 100%;
+        background-color: var(--accent-code);
+        color: #05130c;
+        border: none;
+        padding: 0.8rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-family: var(--font-mono);
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .login-card button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px var(--accent-code-glow);
+    }
+
+    #error-msg {
+        color: #ff5555;
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        margin-top: 1rem;
+        display: none;
+    }
+
+    /* ---------- Hidden Content Container ---------- */
+    #protected-content {
+        display: none;
+        flex-direction: column;
+        min-height: calc(100vh - 73px);
+    }
+
+    #particle-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    main, footer { position: relative; z-index: 2; }
+
+    .page-header {
+        max-width: 850px;
+        margin: 3rem auto 0 auto;
+        padding: 0 2rem;
+    }
+
+    .eyebrow {
+        font-family: var(--font-mono);
+        color: var(--accent-code);
+        font-size: 0.9rem;
+        margin: 0 0 0.7rem 0;
+    }
+
+    h1.page-title {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 2.6rem;
+        letter-spacing: -0.5px;
+        margin: 0 0 1.5rem 0;
+    }
+
+    main {
+        max-width: 850px;
+        margin: 0 auto 40px auto;
+        padding: 0 2rem;
+        flex: 1;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .resume-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2.5rem;
+        background: var(--card-bg);
+        backdrop-filter: blur(10px);
+        padding: 1.1rem 1.5rem;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+
+    .resume-actions span {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        font-family: var(--font-mono);
+    }
+
+    .btn-primary {
+        background-color: var(--accent-code);
+        color: #05130c;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px var(--accent-code-glow);
+    }
+
+    section {
+        background: var(--card-bg);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    section h2 {
+        margin-top: 0;
+        font-family: var(--font-mono);
+        color: var(--accent-code);
+        font-size: 1rem;
+        letter-spacing: 1px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 0.8rem;
+        text-transform: uppercase;
+    }
+
+    .item { margin-bottom: 1.7rem; }
+    .item:last-child { margin-bottom: 0; }
+
+    .item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .item-title {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 1.05rem;
+        color: var(--text-main);
+    }
+
+    .item-subtitle {
+        color: var(--accent-human);
+        font-size: 0.9rem;
+        margin-top: 2px;
+    }
+
+    .item-meta {
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        white-space: nowrap;
+    }
+
+    ul { margin: 0.8rem 0 0 1.2rem; }
+
+    li {
+        margin-bottom: 0.5rem;
+        line-height: 1.55;
+        font-size: 0.93rem;
+        color: var(--text-muted);
+    }
+
+    footer {
+        text-align: center;
+        padding: 1.8rem;
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        background-color: var(--header-bg);
+        border-top: 1px solid var(--border-color);
+    }
+
+    @media (max-width: 720px) {
+        header.site-nav { padding: 1.2rem 1.5rem; }
+        h1.page-title { font-size: 2.1rem; }
+        .resume-actions { flex-direction: column; gap: 0.8rem; align-items: flex-start; }
+    }
+</style>
+</head>
+<body>
+
+    <!-- Header placed outside overlay to remain visible at all times -->
+    <header class="site-nav">
+        <a href="index.html" class="logo">&lt;VS/&gt;</a>
+        <nav class="links">
+            <a href="index.html">Home</a>
+            <a href="Projects.html">Projects</a>
+            <a href="Resume.html">Resume</a>
+            <a href="Documents.html" class="active">Archives</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Password Overlay Screen -->
+    <div id="password-overlay">
+        <div class="login-card">
+            <h2>// ACCESS PROTECTED</h2>
+            <input type="password" id="passInput" placeholder="Enter password" onkeydown="if(event.key === 'Enter') unlockPage()">
+            <button onclick="unlockPage()">ENTER</button>
+            <div id="error-msg">Incorrect password. Try again.</div>
+        </div>
+    </div>
+
+    <!-- Protected Content (Shown on valid entry) -->
+    <div id="protected-content">
+        <canvas id="particle-canvas"></canvas>
+
+        <div class="page-header">
+            <h1 class="page-title">The Archives</h1>
+        </div>
+
+        <main>
+            <div class="resume-actions">
+                <span>Updated 2026</span>
+                <a href="#" class="btn-primary">Download PDF</a>
+            </div>
+
+            <section>
+                <h2>Experience</h2>
+                <div class="item">
+                    <div class="item-header">
+                        <div class="item-title">Software Engineer</div>
+                        <div class="item-meta">2024 — Present</div>
+                    </div>
+                    <div class="item-subtitle">Tech Company</div>
+                    <ul>
+                        <li>Developing web applications and interactive components.</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; Vaibhav Satish</p>
+        </footer>
+    </div>
+
+    <script>
+        function unlockPage() {
+            const CORRECT_PASSWORD = "mysecretpassword"; // Set password here
+            const inputVal = document.getElementById("passInput").value;
+            const overlay = document.getElementById("password-overlay");
+            const content = document.getElementById("protected-content");
+            const errorMsg = document.getElementById("error-msg");
+
+            if (inputVal === CORRECT_PASSWORD) {
+                overlay.style.display = "none";
+                content.style.display = "flex";
+            } else {
+                errorMsg.style.display = "block";
+                document.getElementById("passInput").value = "";
+            }
+        }
+    </script>
+</body>
+</html>

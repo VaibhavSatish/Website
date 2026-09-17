@@ -16,6 +16,9 @@
         --accent-code-glow: rgba(0, 255, 136, 0.22);
         --accent-human: #ffb454;
         --accent-human-glow: rgba(255, 180, 84, 0.22);
+        --accent-blue: #00eeff;
+        --accent-red: #ff5f56;
+        --accent-purple: #b57edc;
         --text-main: #ededf4;
         --text-muted: #8c8fa3;
         --border-color: rgba(255, 255, 255, 0.08);
@@ -68,7 +71,7 @@
         z-index: 10;
     }
 
-    .logo {
+.logo {
         font-family: var(--font-mono);
         font-size: 1.05rem;
         color: var(--accent-code);
@@ -96,14 +99,62 @@
         bottom: 0;
         width: 0%;
         height: 1.5px;
-        background: var(--accent-code);
-        transition: width 0.25s ease;
+        transition: width 0.25s ease, background-color 0.25s ease;
     }
 
-    nav.links a:hover { color: var(--text-main); }
-    nav.links a:hover::after { width: 100%; }
-    nav.links a.active { color: var(--accent-code); }
+    nav.links a:hover::after,
     nav.links a.active::after { width: 100%; }
+
+    /* ---------- Hover & active colors ---------- */
+    /* Home - Green */
+    nav.links a:nth-child(1):hover,
+    nav.links a:nth-child(1).active {
+        color: var(--accent-code);
+    }
+    nav.links a:nth-child(1):hover::after,
+    nav.links a:nth-child(1).active::after {
+        background: var(--accent-code);
+    }
+
+    /* Projects - Orange */
+    nav.links a:nth-child(2):hover,
+    nav.links a:nth-child(2).active {
+        color: var(--accent-human);
+    }
+    nav.links a:nth-child(2):hover::after,
+    nav.links a:nth-child(2).active::after {
+        background: var(--accent-human);
+    }
+
+    /* Resume - Blue */
+    nav.links a:nth-child(3):hover,
+    nav.links a:nth-child(3).active {
+        color: var(--accent-blue);
+    }
+    nav.links a:nth-child(3):hover::after,
+    nav.links a:nth-child(3).active::after {
+        background: var(--accent-blue);
+    }
+
+    /* Archives - Red */
+    nav.links a:nth-child(4):hover,
+    nav.links a:nth-child(4).active {
+        color: var(--accent-red);
+    }
+    nav.links a:nth-child(4):hover::after,
+    nav.links a:nth-child(4).active::after {
+        background: var(--accent-red);
+    }
+
+    /* Contact - Purple */
+    nav.links a:nth-child(5):hover,
+    nav.links a:nth-child(5).active {
+        color: var(--accent-purple);
+    }
+    nav.links a:nth-child(5):hover::after,
+    nav.links a:nth-child(5).active::after {
+        background: var(--accent-purple);
+    }
 
     /* ---------- Page header ---------- */
     .page-header {
@@ -289,6 +340,7 @@
             <a href="index.html">Home</a>
             <a href="Projects.html">Projects</a>
             <a href="Resume.html" class="active">Resume</a>
+            <a href="Documents.html">Archives</a>
             <a href="Contact.html">Contact</a>
         </nav>
     </header>
@@ -302,6 +354,11 @@
         <div class="resume-actions">
             <span>Prefer the native document?</span>
             <a href="vaibhav_satish.pdf" class="btn-primary" download>Download PDF</a>
+        </div>
+
+        <div class="resume-actions">
+            <span>Want to see tailored versions?</span>
+            <a href="Documents.html" class="btn-primary">Click Here!</a>
         </div>
 
         <!-- AUTO-GENERATED-RESUME-START -->
