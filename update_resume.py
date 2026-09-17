@@ -3,7 +3,7 @@ import re
 
 def update_resume_from_json():
     print("1. Reading resume.json...")
-    with open("resume.json", "r", encoding="utf-8") as f:
+    with open("resumes/master/resume.json", "r", encoding="utf-8") as f:
         data = json.load(f)
 
     html_builder = []
