@@ -36,4 +36,4 @@ jobs:
           git config --global user.name "GitHub Action Bot"
           git config --global user.email "action@github.com"
           git add Resume.html resume.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update resume website from PDF [skip ci]" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update resume website from PDF [skip ci]" && git push https://x-access-token:${{ secrets.ACCESS_TOKEN }}@github.com/VaibhavSatish/Website.git main)
