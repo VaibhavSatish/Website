@@ -1,4 +1,6 @@
 {
+  "framework": null,
+  "outputDirectory": ".",
   "buildCommand": "git config --global url.\"https://x-access-token:${GITHUB_ACCESS_TOKEN}@github.com/\".insteadOf \"https://github.com/\" && git submodule update --init --recursive",
   "routes": [
     {
