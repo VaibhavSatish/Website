@@ -3,10 +3,7 @@
   "routes": [
     {
       "src": "/resumes/(.*)",
-      "status": 403,
-      "response": {
-        "body": "Access Denied"
-      }
+      "status": 403
     }
   ]
 }
