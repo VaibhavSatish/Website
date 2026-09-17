@@ -1,5 +1,5 @@
 {
-  "buildCommand": "git config extraheader \"AUTHORIZATION: basic $(echo -n x-access-token:$GITHUB_ACCESS_TOKEN | base64)\" && git submodule update --init --recursive",
+  "buildCommand": "git config --global url.\"https://x-access-token:${GITHUB_ACCESS_TOKEN}@github.com/\".insteadOf \"https://github.com/\" && git submodule update --init --recursive",
   "routes": [
     {
       "src": "/resumes/(.*)",
