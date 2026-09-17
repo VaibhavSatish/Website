@@ -1,0 +1,12 @@
+{
+  "buildCommand": "git config extraheader \"AUTHORIZATION: basic $(echo -n x-access-token:$GITHUB_ACCESS_TOKEN | base64)\" && git submodule update --init --recursive",
+  "routes": [
+    {
+      "src": "/resumes/(.*)",
+      "status": 403,
+      "response": {
+        "body": "Access Denied"
+      }
+    }
+  ]
+}
