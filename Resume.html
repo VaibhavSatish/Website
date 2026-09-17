@@ -42,21 +42,8 @@
         display: flex;
         flex-direction: column;
         min-height: 100vh;
-        position: relative;
         overflow-x: hidden;
     }
-
-    #particle-canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 0;
-    }
-
-    main, footer { position: relative; z-index: 2; }
 
     /* ---------- Nav (sticky, matches site) ---------- */
     header.site-nav {
@@ -159,15 +146,18 @@
     /* ---------- Page header ---------- */
     .page-header {
         max-width: 850px;
-        margin: 3rem auto 0 auto;
+        width: 100%;
+        margin: 3rem auto 2rem auto;
         padding: 0 2rem;
+        text-align: center;
+        box-sizing: border-box;
     }
 
     .eyebrow {
         font-family: var(--font-mono);
         color: var(--accent-code);
         font-size: 0.9rem;
-        margin: 0 0 0.7rem 0;
+        margin: 0 0 0.55rem 0;
     }
 
     h1.page-title {
@@ -175,7 +165,8 @@
         font-weight: 700;
         font-size: 2.6rem;
         letter-spacing: -0.5px;
-        margin: 0 0 1.5rem 0;
+        margin: 0 0 1.35rem 0;
+        line-height: 1.1;
     }
 
     main {
@@ -189,23 +180,14 @@
 
     .resume-actions {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
-        margin-bottom: 2.5rem;
-        background: var(--card-bg);
-        backdrop-filter: blur(10px);
-        padding: 1.1rem 1.5rem;
-        border-radius: 12px;
-        border: 1px solid var(--border-color);
-    }
-
-    .resume-actions span {
-        color: var(--text-muted);
-        font-size: 0.9rem;
-        font-family: var(--font-mono);
+        flex-wrap: wrap;
+        gap: 0.8rem;
     }
 
     .btn-primary {
+        display: inline-block;
         background-color: var(--accent-code);
         color: #05130c;
         border: none;
@@ -221,6 +203,26 @@
     .btn-primary:hover {
         transform: translateY(-2px);
         box-shadow: 0 10px 25px var(--accent-code-glow);
+    }
+
+    .btn-outline {
+        display: inline-block;
+        background: transparent;
+        color: var(--text-main);
+        border: 1px solid var(--border-color);
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .btn-outline:hover {
+        transform: translateY(-2px);
+        border-color: var(--accent-blue);
+        color: var(--accent-blue);
     }
 
     section {
@@ -327,13 +329,11 @@
     @media (max-width: 720px) {
         header.site-nav { padding: 1.2rem 1.5rem; }
         h1.page-title { font-size: 2.1rem; }
-        .resume-actions { flex-direction: column; gap: 0.8rem; align-items: flex-start; }
+        .resume-actions { flex-direction: column; gap: 0.8rem; }
     }
 </style>
 </head>
 <body>
-    <canvas id="particle-canvas"></canvas>
-
     <header class="site-nav">
         <a href="index.html" class="logo">&lt;VS/&gt;</a>
         <nav class="links">
@@ -348,18 +348,13 @@
     <div class="page-header">
         <p class="eyebrow">// where i've worked</p>
         <h1 class="page-title">Resume</h1>
+        <div class="resume-actions">
+            <a href="vaibhav_satish.pdf" class="btn-primary" download>Download PDF</a>
+            <a href="Documents.html" class="btn-outline">Tailored versions</a>
+        </div>
     </div>
 
     <main>
-        <div class="resume-actions">
-            <span>Prefer the native document?</span>
-            <a href="vaibhav_satish.pdf" class="btn-primary" download>Download PDF</a>
-        </div>
-
-        <div class="resume-actions">
-            <span>Want to see tailored versions?</span>
-            <a href="Documents.html" class="btn-primary">Click Here!</a>
-        </div>
 
         <!-- AUTO-GENERATED-RESUME-START -->
 <section>
@@ -517,78 +512,5 @@
     </main>
 
     <footer>&copy; 2026 Vaibhav Satish</footer>
-
-    <script>
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-        let particlesArray = [];
-        const numberOfParticles = 60;
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 1;
-                this.speedX = (Math.random() - 0.5) * 0.7;
-                this.speedY = (Math.random() - 0.5) * 0.7;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x > canvas.width) this.x = 0;
-                else if (this.x < 0) this.x = canvas.width;
-                if (this.y > canvas.height) this.y = 0;
-                else if (this.y < 0) this.y = canvas.height;
-            }
-            draw() {
-                ctx.fillStyle = 'rgba(0, 255, 136, 0.55)';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function initParticles() {
-            particlesArray = [];
-            for (let i = 0; i < numberOfParticles; i++) particlesArray.push(new Particle());
-        }
-
-        function connectParticles() {
-            const maxDistance = 140;
-            for (let a = 0; a < particlesArray.length; a++) {
-                for (let b = a + 1; b < particlesArray.length; b++) {
-                    const dx = particlesArray[a].x - particlesArray[b].x;
-                    const dy = particlesArray[a].y - particlesArray[b].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < maxDistance) {
-                        const opacity = (1 - (distance / maxDistance)) * 0.22;
-                        ctx.strokeStyle = `rgba(0, 255, 136, ${opacity})`;
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particlesArray.forEach(p => { p.update(); p.draw(); });
-            connectParticles();
-            requestAnimationFrame(animateParticles);
-        }
-
-        initParticles();
-        animateParticles();
-    </script>
 </body>
 </html>
