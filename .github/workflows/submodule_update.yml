@@ -1,0 +1,32 @@
+name: Update Private Submodule
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-submodule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main repository and private submodule
+        uses: actions/checkout@v4
+        with:
+          # Passes your PAT to authorize cloning the private submodule
+          token: ${{ secrets.SUBMODULE_PAT }}
+          submodules: true
+          # Optional: fetch-depth 0 is sometimes required to accurately compare commits
+          fetch-depth: 0 
+
+      - name: Fetch latest submodule updates
+        run: |
+          git submodule update --remote path/to/your/submodule
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git add path/to/your/submodule
+          
+          git diff --staged --quiet || (git commit -m "chore: auto-update private submodule reference" && git push)
